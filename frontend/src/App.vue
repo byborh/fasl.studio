@@ -1,47 +1,42 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <div id="app">
+    <!--HEADER DU SITE-->
+    <headerC />
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+    <!--BODY DU SITE-->
+    <div class="pinterest-img">
+
+    	<div class="pinterest-img-deux-alignes">
+    				<img src="../public/img/408210154_902853758043645_7692857693830266755_n.jpg" alt="Photo vintage">
+    				<div class="texteCentrer">Il y en a qui regardent, il y en a qui <b>portent</b>.</div>
+      </div>
+      
+    	<div class="pinterest-img-deux-alignes">
+    				<img src="../public/img/380854559_828498658740460_3155866281269219205_n.jpg" alt="Photo vintage">
+    				<div class="texteCentrer">Chapitre</div>
+			</div>
+
     </div>
-  </header>
 
-  <main>
-    <TheWelcome />
-  </main>
+    <!--FOOTER DU SITE-->
+    <footerC />
+  </div>
+
 </template>
 
+<script>
+import headerC from "./components/headerC.vue"
+import footerC from "./components/footerC.vue"
+
+export default {
+  name: "App",
+  components: {
+    headerC,
+    footerC
+  }
+}
+</script>
+
 <style scoped>
-header {
-  line-height: 1.5;
-}
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
 </style>

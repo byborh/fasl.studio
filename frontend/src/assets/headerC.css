@@ -1,9 +1,9 @@
-@import './base.css';
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url(http://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
 
 body {
-  background-color: #2D2E2E;
-  color: #FBFBFB;
+  background-color: #bcabae;
+  color: #fff;
 }
 
 * {
@@ -13,7 +13,7 @@ body {
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Droid Arabic Kufi', serif;
 }
 
 .container {
@@ -24,7 +24,8 @@ body {
 
 .navbar {
   width: 100%;
-  box-shadow: 0 1px 4px #FBFBFB;
+  background-color: #2d2e2e;
+  box-shadow: 0 1px 4px #0f0f0f;
 }
 
 .nav-container {
@@ -44,7 +45,7 @@ body {
 
 .navbar .nav-container a {
   text-decoration: none;
-  color: #FBFBFB;
+  color: #fff;
   font-weight: 500;
   font-size: 1.2rem;
   padding: 0.7rem;
@@ -66,7 +67,7 @@ body {
   height: 32px;
   width: 32px;
   top: 20px;
-  left: 20px;
+  left: 5%;
   z-index: 5;
   opacity: 0;
   cursor: pointer;
@@ -78,7 +79,7 @@ body {
   width: 32px;
   position: absolute;
   top: 17px;
-  left: 20px;
+  left: 5%;
   z-index: 2;
   display: flex;
   flex-direction: column;
@@ -90,7 +91,7 @@ body {
   height: 4px;
   width: 100%;
   border-radius: 10px;
-  background: #FBFBFB;
+  background: #fff;
 }
 
 .nav-container .hamburger-lines .line1 {
@@ -115,8 +116,8 @@ body {
   transform: translate(-150%);
   display: flex;
   flex-direction: column;
-  margin-left: -40px;
-  padding-left: 50px;
+  margin-left: -8%;
+  padding-left: 10%;
   transition: transform 0.5s ease-in-out;
   text-align: center;
 }
@@ -130,32 +131,37 @@ body {
 .logo {
   position: absolute;
   top: 5px;
-  right: 15px;
+  right: 10%;
   font-size: 1.2rem;
 }
 
 .form-place {
   position: absolute;
-  top: 5px;
-  right: 400px;
-  font-size: 1.2rem;
-  color: #FBFBFB;
+  top: 10px;
+  right: 35%;
+  font-size: 15px;
+  color: #bcabae;
+  height: 10px;
 }
 
 input {
-  width: 250px;
+  width: 80%;
   height: 40px;
-  border: #FBFBFB;
+  border: #fff;
   border-radius: 15px;
-  background-color: #FBFBFB;
-  color: #716969;
+  background-color: #bcabae;
+  color: #fff;
   font-size: 24px;
-  padding-left: 10px;
+  padding-left: 5%;
 }
 
 button {
-  font-size: 24px;
-  width: 70px;
+  font-size: 20%;
+  border-radius: 10px;
+  background-color: #bcabae;
+  color: #fff;
+  width: 50px;
+  height: 40px;
   cursor: pointer;
 }
 
@@ -183,39 +189,3 @@ button {
   justify-content: center;
   align-items: center;
 }
-
-@import './base.css';
-
-/*La partie de photo vintage du site*/
-.pinterest-img {
-	width: 100%;
-	max-height: 15%;
-    align-items: center;
-    
-}
-
-.pinterest-img-deux-alignes {
-	display: table-cell;
-	width: 50%;
-	height: 100%;
-	position: relative;
-	text-align: center;
-	overflow: hidden;
-}
-
-.pinterest-img img {
-	width: 100%;
-	height: 100%;
-}
-
-.texteCentrer {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	font-size: 50px;
-	color: white;
-	text-shadow: 2px 2px 5px black;
-}
-
-/*-----------------------------------------------*/

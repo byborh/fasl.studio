@@ -1,0 +1,46 @@
+<template>
+    <nav>
+    <div class="navbar">
+        <div class="logo">
+          <h1>{{ marque_nom_arabe }}</h1>
+        </div>
+        <div class="container nav-container">
+            <input class="checkbox" type="checkbox" name="" id="" />
+            <div class="hamburger-lines">
+            <span class="line line1"></span>
+            <span class="line line2"></span>
+            <span class="line line3"></span>
+        </div>  
+        
+        <div class="form-place">
+            <form method="post" action="/check-user">
+                <input type="text" name="username" placeholder="Chercher...">
+                <button type="submit">ﻣ</button>
+            </form>
+        </div>
+        <div class="menu-items">
+          <li><a href="/">Home</a></li>
+          <li><a href="/nouveautes">Nouveautés</a></li>
+          <li><a href="/vetements">Vêtements</a></li>
+          <li><a href="/accessoires">Accessoires</a></li>
+          <li><a href="/about">A Propos</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </div>
+      </div>
+    </div>
+</nav>
+</template>
+
+<script>
+    export default {
+        data(){
+            return {
+                marque_nom_arabe: "فصل"
+            }
+        }
+    }
+</script>
+
+<style scoped>
+
+</style>
