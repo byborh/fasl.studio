@@ -61,6 +61,7 @@
 import headerC from "./components/headerC.vue"
 import footerC from "./components/footerC.vue"
 import { getTransitionRawChildren } from "vue"
+import axios from 'axios';
 
 export default {
   name: "App",
@@ -103,10 +104,21 @@ export default {
     identification() {
       return `${this.firstName} ${this.lastName} but you can call me ${this.pseudo}.`.toUpperCase()
     }
+  }, mounted() {
+    axios.post('http://localhost:8080/login', {
+      username: "testName",
+      password: "testPassword"
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 }
 </script>
 
-<style scoped>
+<style scoped>  
 
 </style>
