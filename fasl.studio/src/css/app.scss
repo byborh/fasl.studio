@@ -1,1 +1,41 @@
 // app global css in SCSS form
+
+.img-4-style {
+  min-height: 300px;
+}
+
+.img-changeur-d-image {
+  min-height: 300px;
+  min-width: 200px;
+}
+
+.bottom-line-hover:hover {
+  border-bottom: 1px solid black;
+}
+
+/* FOOTER CSS */ 
+footer {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  width: 100%;
+  min-height: 80px;
+  max-height: 180px;
+  color: white;
+  margin: auto;
+  position:absolute;
+}
+  
+footer a, footer p {
+  font-size: 16px;
+  margin: 2%;
+  vertical-align: middle;
+}
+  
+footer a {float: left;}
+footer p {float: right;}
+  
+footer a img {
+  width: 18px;
+  height: 20px;
+}
