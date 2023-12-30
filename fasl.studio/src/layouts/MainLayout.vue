@@ -28,10 +28,24 @@
         <q-item-label
           header
         >
-        <a href="/" style="text-decoration: none; color: black;"><div style="font-size: 30px; text-align: center;">فصل</div></a>
-        </q-item-label>
+        <a href="/" style="text-decoration: none; color: black;"><div style="font-size: 30px; text-align: center;">فصل</div></a>        
+ 
+      </q-item-label>
+      <br>
 
-        <br>
+      <q-expansion-item
+          expand-separator
+          label="Vêtements"
+        ><!-- icon="perm_identity" caption="John Doe" -->
+          <q-card>
+            <EssentialLink
+            v-for="link in essentialLinks"
+            :key="link.title"
+            v-bind="link"
+            class="bottom-line-hover"
+          />
+          </q-card>
+        </q-expansion-item>
 
         <EssentialLink
           v-for="link in essentialLinks"
@@ -47,7 +61,7 @@
     </q-page-container>
     
     <!--FOOTER DU SITE-->
-    <footer className="fixed-bottom absolute-bottom q-pa-xl">
+    <footer className="fixed-bottom absolute-bottom q-pt-xl">
         <div class="logo-lien">
           <a href="https://www.tiktok.com"><img src="https://www.pngmart.com/files/20/TikTok-Logo-PNG.png" alt="tiktok_logo"></a>
           <a href="https://www.instagram.com/fasl.studio  /"><img src="https://www.pngmart.com/files/13/Insta-Logo-PNG-Pic.png" alt="Instagram_logo"></a>
@@ -73,9 +87,6 @@ import EssentialLink from 'components/EssentialLink.vue'
 const linksList = [
   {
     title: 'Nouveautés',
-  },
-  {
-    title: 'Vêtement',
   },
   {
     title: 'Accessoires',
@@ -137,6 +148,21 @@ const linksList = [
   // }
 ]
 
+const linksListVetements = [
+  {
+    title: 'T-Shirt'
+  },
+  {
+    title: 'Pull avec/sans capuche'
+  },
+  {
+    title: 'Jogging'
+  },
+  {
+    title: 'Weat'
+  }
+]
+
 export default defineComponent({
   name: 'MainLayout',
 
@@ -149,6 +175,7 @@ export default defineComponent({
 
     return {
       essentialLinks: linksList,
+      essentialLinksVetements: linksListVetements,
       leftDrawerOpen,
       toggleLeftDrawer () {
         leftDrawerOpen.value = !leftDrawerOpen.value

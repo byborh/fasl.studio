@@ -86,12 +86,11 @@
 
 <script>
 import { defineComponent, ref } from 'vue'
-import { MainFooter } from 'assets/layouts/MainFooter.vue'
 
 export default defineComponent({
   name: 'IndexPage',
   setup () {
-    const produit = [1, 8]
+    const produit = [1, 2]
 
     const url = ref('https://picsum.photos/500/300')
 
