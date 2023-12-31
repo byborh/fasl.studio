@@ -1,4 +1,44 @@
+// Imports
+@import url(https://fonts.googleapis.com/earlyaccess/thabit.css);
+
 // app global css in SCSS form
+
+* {
+  font-family: Thabit;
+}
+
+* h1 {
+  font-size: 286.362px;
+  color: #0d1f22;
+}
+
+* h2 {
+  font-size: 176.985px;
+  color: #0d1f22;
+}
+
+* h3 {
+  font-size: 109.385px;
+  color: #0d1f22;
+}
+* h4 {
+  font-size: 67.605px;
+  color: #0d1f22;
+}
+
+* h5 {
+  font-size: 41.783px;
+  color: #0d1f22;
+}
+
+* h6 {
+  font-size: 25.824px;
+  color: #0d1f22;
+}
+
+* p {
+  font-size: 16px;
+}
 
 .img-4-style {
   min-height: 300px;
