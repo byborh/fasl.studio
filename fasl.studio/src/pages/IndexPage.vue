@@ -1,19 +1,81 @@
 <template>
   <div id="app">
     <!--BODY DU SITE-->
-    <div class="body">
-      <!-- VIDEO-->
-      <video playsinline autoplay muted loop poster="" style="width: 100%">
-        <source src="../assets/img/logo/fasl-studio-video.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-      </video>
-    </div> 
+    <!-- Changeur d'image -->
+    <div class="changeur-d-image">
+        <img
+          :src="url"
+          class="shadow-10 img-changeur-d-image"
+          spinner-color="white"
+        >
+        <button class="test1"
+        @click="refresh"
+        >
+          zeuhfizqeuhfiuzehfs
+        </button>
+      </div>
 
+      <br><br>
+
+    
+      <!-- Who Part -->
+      <div class="who-part">
+        <div class="who-part-img">
+          <img src="../assets/img/383635202_291013390465448_2162049595933381589_n.jpg" alt="test">
+        </div>
+        <div class="who-part-text">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est labore iure, delectus ab numquam enim recusandae pariatur illum iusto qui nemo. Ut eius natus sit nostrum unde mollitia quibusdam illum!</p>
+        </div>
+      </div>
+
+      <div class="who-part">
+        <div class="who-part-text">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est labore iure, delectus ab numquam enim recusandae pariatur illum iusto qui nemo. Ut eius natus sit nostrum unde mollitia quibusdam illum!</p>
+        </div>
+        <div class="who-part-img">
+          <img src="../assets/img/408210154_902853758043645_7692857693830266755_n.jpg" alt="test">
+        </div>
+      </div>
+
+      <br><br>
+
+      <!-- How Text -->
+      <div class="how">
+        <div class="how-text">
+          <h6>Lorem</h6>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil excepturi veritatis neque, voluptate minus repudiandae, eaque amet consequatur odit ab reiciendis sed labore non delectus similique deleniti nesciunt itaque repellendus!</p>
+        </div>
+        <div class="how-text">
+          <h6>Lorem</h6>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil excepturi veritatis neque, voluptate minus repudiandae, eaque amet consequatur odit ab reiciendis sed labore non delectus similique deleniti nesciunt itaque repellendus!</p>
+        </div>
+        <!-- <div class="how-text">
+          <h6>Lorem</h6>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil excepturi veritatis neque, voluptate minus repudiandae, eaque amet consequatur odit ab reiciendis sed labore non delectus similique deleniti nesciunt itaque repellendus!</p>
+        </div> -->
+    </div>
+
+      <br><br>
+
+      <!-- VIDEO Part -->
+      <div class="video-part">
+        <h6>Video de la fabrication</h6>
+        <video playsinline autoplay muted loop poster="" style="width: 100%">
+          <source src="../assets/img/logo/fasl-studio-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+      </div>
+
+
+      <br><br>
+
+
+      
     <div class="q-pa-md">
       <q-card class="my-card">
         <q-parallax
           src="../assets/img/test/marca_stussy_historia_streetwear_2218.webp"
-          :height="500"
+          :height="400"
         />
 
         <q-card-section>
@@ -27,11 +89,10 @@
       </q-card>
     </div>
     
-      <!-- 4 Images Stylés -->
       <div class="q-pa-md">
         <div class="q-col-gutter-md row items-start">
           <div class="col-6">
-            <q-img src="https://cdn.quasar.dev/img/parallax2.jpg" class="img-4-style">
+            <q-img src="../assets/img/408210154_902853758043645_7692857693830266755_n.jpg" class="img-4-style">
               <div class="absolute-full text-subtitle2 flex flex-center">
                 Fasl.Studio
               </div>
@@ -39,15 +100,15 @@
           </div>
 
           <div class="col-6">
-            <q-img src="https://cdn.quasar.dev/img/parallax2.jpg" class="img-4-style"/>
+            <q-img src="../assets/img/383635202_291013390465448_2162049595933381589_n.jpg" class="img-4-style"/>
           </div>
 
           <div class="col-6">
-            <q-img src="https://cdn.quasar.dev/img/parallax2.jpg" class="img-4-style"/>
+            <q-img src="../assets/img/365392420_1660761207734436_3165609358977754361_n.jpg" class="img-4-style"/>
           </div>
 
           <div class="col-6">
-            <q-img src="https://cdn.quasar.dev/img/parallax2.jpg" class="img-4-style">
+            <q-img src="../assets/img/380854559_828498658740460_3155866281269219205_n.jpg" class="img-4-style">
               <div class="absolute-full text-subtitle2 flex flex-center">
                 Fasl.Studio
               </div>
@@ -56,25 +117,13 @@
         </div>
       </div>
 
-      <!-- Changeur d'image -->
-      <div class="changeur-d-image q-pa-md text-center">
-        <h4 style="max-width: 240px;">
-          All about to be a "millionaire"
-        </h4>
-        <q-img
-          @click="refresh"
-          :src="url"
-          class="shadow-10 img-changeur-d-image"
-          spinner-color="white"
-          style="height: 100%; width: 50%; cursor: pointer;"
-        >
-          <div class="absolute-full text-subtitle2 flex flex-center">
-            Clique ici
-          </div>
-        </q-img>
-        
-          
-      </div>
+
+      <br><br>
+      <br><br>
+      <br><br>
+      <br><br>
+
+     
 
     <!-- place QPageScroller at end of page -->
     <q-page-scroller position="bottom-right" :scroll-offset="150" :offset="[18, 18]">
@@ -90,19 +139,14 @@ import { defineComponent, ref } from 'vue'
 export default defineComponent({
   name: 'IndexPage',
   setup () {
-    const produit = [1, 2]
 
     const url = ref('https://picsum.photos/500/300')
 
     return {
-      // email, userName, count, minCount, maxCount, firstName, lastName, pseudo, 
-      produit,
       url,
       refresh () {
         url.value = 'https://picsum.photos/500/300?t=' + Math.random()
       }
-      // emailInput, userInput, decrementation, incrementation, numberInput,
-      // lorem: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
     }
   }
 })
@@ -116,16 +160,87 @@ export default defineComponent({
 /* Changeur d'image */
 .changeur-d-image {
   min-height: 800px;
+  width: 100%;
+  top: 0;
+  overflow: hidden;
+}
+
+.img-changeur-d-image {
+  min-height: 800px;
+  /* height: 100%; */
+  max-width: 120%;
+  min-width: 100%;
+}
+
+.principal-text {
+  top: 50%;
+  left: 50%;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.changeur-d-image q-img {
-  height: auto;
-  width: auto;
+.test1{
+  left: 50%;
+  top: 50%;
 }
 
-.app {
-  background-color: black;
+/* Who Row */
+
+.who-part {
+  min-height: 500px;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #6f722f;
+  color: #fff;
 }
+
+.who-part-img {
+  width: 50%;
+}
+
+.who-part-img img {
+  width: 100%;
+  height: 100%;
+}
+
+.who-part-text {
+  width: 50%;
+  padding: 20px 20px;
+}
+
+/* How Text */
+.how {
+  min-height: 300px;
+  max-height: 700px;
+
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: auto;
+}
+
+.how-text{
+  padding: 20px 12px;
+}
+
+/* Vidéo Part */
+.video-part {
+  text-align: center;
+}
+
+.how h6, .video-part h6 {
+  color:#0d1f22;
+}
+
+.how p {
+  color: #3c5233;
+}
+
+
 </style>
