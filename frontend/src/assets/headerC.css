@@ -100,7 +100,9 @@ header {
 
 .navbar .menu-items {
   padding-top: 120px;
-  background-color: azure;
+  background: rgb(40,48,30);
+  background: linear-gradient(90deg, rgba(40,48,30,1) 0%, rgba(79,83,38,1) 64%, rgba(41,40,50,1) 100%);
+
   height: 100em;
   width: 40%;
   transform: translate(-150%);

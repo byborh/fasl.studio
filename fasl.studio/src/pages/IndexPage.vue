@@ -1,23 +1,39 @@
 <template>
   <div id="app">
     <!--BODY DU SITE-->
-    <!-- Changeur d'image -->
-    <div class="changeur-d-image">
+    
+    <div class="main-open-page">
+      <div class="main-text">
+        <h5>Fasl Studio</h5>
+        <p>je ne isap jd timothé et kr ozfn klf jkdjofehzoif fd,</p>
+        <button class="button-36" role="button">Cliquer ici</button>
+
+
+      </div>
+      <!-- <div class="main-img">
+        <img src="../assets/img/T-Shirt-13-1-1024x1004.png" alt="png t-shirt mage">
+      </div> -->
+    </div>
+
+
+
+      <br><br>
+      <br><br>
+      <br><br>
+      <br><br>
+      <br><br>
+
+      <!-- Changeur d'image -->
+      <!-- <div class="changeur-d-image">
         <img
           :src="url"
           class="shadow-10 img-changeur-d-image"
           spinner-color="white"
         >
-        <button class="test1"
-        @click="refresh"
-        >
+        <button class="test1" @click="refresh">
           zeuhfizqeuhfiuzehfs
         </button>
-      </div>
-
-      <br><br>
-
-    
+      </div> -->
       <!-- Who Part -->
       <div class="who-part">
         <div class="who-part-img">
@@ -49,11 +65,8 @@
           <h6>Lorem</h6>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil excepturi veritatis neque, voluptate minus repudiandae, eaque amet consequatur odit ab reiciendis sed labore non delectus similique deleniti nesciunt itaque repellendus!</p>
         </div>
-        <!-- <div class="how-text">
-          <h6>Lorem</h6>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil excepturi veritatis neque, voluptate minus repudiandae, eaque amet consequatur odit ab reiciendis sed labore non delectus similique deleniti nesciunt itaque repellendus!</p>
-        </div> -->
     </div>
+
 
       <br><br>
 
@@ -70,7 +83,7 @@
       <br><br>
 
 
-      
+
     <div class="q-pa-md">
       <q-card class="my-card">
         <q-parallax
@@ -153,6 +166,83 @@ export default defineComponent({
 </script>
 
 <style scoped>
+/* bg-img-IndexPage.vue */
+.main-open-page {
+  height: 100vh;
+  width: 100%;
+  /* background-image: url('../assets/img/gazon-img-4.jpg'); */
+  top: 0;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+}
+
+.main-text {
+  height: 100%;
+  width: 60%;
+  padding-top: 10%;
+  padding-left: 2%;
+  vertical-align: baseline;
+}
+
+.main-img {
+  width: 40%;
+  min-width: 220px;
+  height: 80%;
+  text-align: center;
+  overflow: hidden;
+}
+
+.main-img img {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.main-open-page button {
+  text-decoration: none;
+}
+
+.main-open-page h5 {
+  color: #6f722f;
+}
+
+/* CSS */
+.button-36 {
+  background-image: linear-gradient(92.88deg, #0d1f22 9.16%, #264027 43.89%, #3c5233 64.72%);
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-family: "Inter UI","SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  height: 30px;
+  padding: 0 1.6rem;
+  text-align: center;
+  text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+  transition: all .5s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-36:hover {
+  box-shadow: rgb(60, 82, 51, 0.5) 0 1px 30px;
+  transition-duration: .1s;
+}
+
+@media (min-width: 768px) {
+  .button-36 {
+    padding: 0 2.6rem;
+  }
+}
+
 .my-card {
   width: 100%;
 }
@@ -188,14 +278,17 @@ export default defineComponent({
 /* Who Row */
 
 .who-part {
-  min-height: 500px;
+  min-height: 300px;
+  max-height: 350px;
   
   display: flex;
   justify-content: center;
   align-items: center;
+  
   width: 100%;
-  background-color: #6f722f;
-  color: #fff;
+  padding: 20px 20px;
+
+  overflow: hidden;
 }
 
 .who-part-img {
@@ -210,6 +303,14 @@ export default defineComponent({
 .who-part-text {
   width: 50%;
   padding: 20px 20px;
+  height: 100vh;
+  background-color: #6f722f;
+
+}
+
+.who-part-text p {
+  color: #fff;
+
 }
 
 /* How Text */
@@ -226,7 +327,8 @@ export default defineComponent({
 }
 
 .how-text{
-  padding: 20px 12px;
+  margin: 20px 12px;
+  border: 1px solid #0d1f22;
 }
 
 /* Vidéo Part */

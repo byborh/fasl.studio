@@ -5,7 +5,7 @@
       <nav>
         <a href="/" id="title">ف<span>صل</span></a>
         <ul>
-          <li><a href="/">Vêt<span>ements</span></a></li>
+          <li><a href="/vetements">Vêt<span>ements</span></a></li>
           <li><a href="/">Pan<span>ier</span></a></li>
           <li><a href="/">Pro<span>fil</span></a></li>
         </ul>
