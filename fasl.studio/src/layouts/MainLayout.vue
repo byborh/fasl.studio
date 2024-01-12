@@ -7,7 +7,7 @@
         <ul>
           <li><a href="/">Vêt<span>ements</span></a></li>
           <li><a href="/">Pan<span>ier</span></a></li>
-          <li><a href="/">Pro<span>fil</span></a></li>
+          <li><a href="/profil">Pro<span>fil</span></a></li>
         </ul>
       </nav>
     </header>
