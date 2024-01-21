@@ -2,16 +2,16 @@
   <q-layout view="lHh Lpr lFf">
     <header>
       <nav>
-        <a href="/" id="title">ف<span>صل</span></a>
+        <a href="/" id="title">ف<span class="u-color">صل</span></a>
         <ul>
           <li>
-            <a href="/vetements">Vêt<span>ements</span></a>
+            <a href="/vetements">Vêt<span class="u-color">ements</span></a>
           </li>
           <li>
-            <a href="/">Pan<span>ier</span></a>
+            <a href="/">Pan<span class="u-color">ier</span></a>
           </li>
           <li>
-            <a href="/profil">Pro<span>fil</span></a>
+            <a href="/profil">Pro<span class="u-color">fil</span></a>
           </li>
         </ul>
       </nav>
@@ -101,13 +101,6 @@ ul {
 
 li {
   display: inline-block;
-}
-
-span {
-  text-decoration: underline;
-  text-decoration-color: #b38a58;
-  height: 1px;
-  text-decoration-thickness: 3px;
 }
 
 li a {

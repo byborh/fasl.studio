@@ -1,24 +1,54 @@
+<script setup>
+// export default {
+//   data() {
+//     return {
+//       text: "",
+//     };
+//   },
+//   methods: {
+//     message() {
+//       console.log("Message from MyCard.vue");
+//     },
+//   },
+// };
+
+defineProps({
+  imageUrl: String,
+  title: String,
+  price: String,
+  isAdded: Boolean,
+});
+
+const tes = () => {
+  alert(1425);
+};
+</script>
+
 <template>
-  <div class="piece q-gutter-md row items-start relative-position">
+  <div class="piece q-gutter-md items-start relative-position .col-6 .col-md-4">
     <img
-      src="../../public/like.png"
-      alt="like"
-      class="like absolute top-0 left-0"
+      @click="tes"
+      :src="
+        !isAdded
+          ? '../../public/logo/panier.png'
+          : '../../public/logo/panier-2.png'
+      "
+      alt="ajouter au panier"
+      class="panier absolute top-0 left-0"
     />
-    <img src="../../public/sneakers/sneakers-1.jpg" class="piece-img" />
-    <p>Jordan 1 Univercity Blue</p>
-    <div class="flex justify-between">
-      <div class="">
-        <span>Prix :</span>
-        <b>150€</b>
-      </div>
+    <img :src="imageUrl" class="piece-img" />
+    <p class="u-color">{{ title }}</p>
+    <div class="price-div flex justify-between">
+      <span>Prix :</span>
+      <b>{{ price }}€</b>
     </div>
   </div>
 </template>
 
 <style>
 .piece {
-  width: 180px;
+  width: 200px;
+  max-width: 220px;
   min-height: 240px;
   border: 0.2px solid black;
   padding: 4px;
@@ -26,24 +56,30 @@
   border-radius: 30px;
   box-shadow: inset;
   margin-bottom: 25px;
+  margin-left: 2%;
+  margin-right: 2%;
 }
 .piece:hover {
   translate: -2px;
   transition: 0.8s;
 }
 .piece-img {
-  padding-right: 20px;
+  padding-right: 28px;
   width: 100%;
   height: 150px;
   overflow: hidden;
 }
 
-.piece-img img {
-  width: 100%;
-}
-
-.like {
+.panier {
   height: 20px;
   width: 20px;
+}
+
+.piece b {
+  margin-right: 10px;
+}
+
+.price-div {
+  padding-top: 8px;
 }
 </style>
