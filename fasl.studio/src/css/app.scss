@@ -53,7 +53,14 @@
   border-bottom: 1px solid black;
 }
 
-/* FOOTER CSS */ 
+.u-color {
+  text-decoration: underline;
+  text-decoration-color: #b38a58;
+  height: 1px;
+  text-decoration-thickness: 3px;
+}
+
+/* FOOTER CSS */
 footer {
   margin: 0;
   padding: 0;
@@ -63,19 +70,28 @@ footer {
   max-height: 180px;
   color: white;
   margin: auto;
-  position:absolute;
+  position: absolute;
 }
-  
-footer a, footer p {
+
+footer a,
+footer p {
   font-size: 16px;
   margin: 2%;
   vertical-align: middle;
 }
-  
-footer a {float: left;}
-footer p {float: right;}
-  
+
+footer a {
+  float: left;
+}
+footer p {
+  float: right;
+}
+
 footer a img {
   width: 18px;
   height: 20px;
+}
+
+.first-div {
+  padding-top: 50px;
 }
