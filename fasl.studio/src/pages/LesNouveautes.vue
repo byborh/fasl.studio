@@ -71,7 +71,7 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent ({
-    data () {
+    setup () {
         return {
             lorem : "sum text about idk broo, ily cr7"
         }
