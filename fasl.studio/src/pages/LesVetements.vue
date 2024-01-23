@@ -21,6 +21,10 @@ export default {
     MyCards,
   },
 };
+
+const t = () => {
+  alert("hello maan");
+}
 </script>
 
 <style scoped>

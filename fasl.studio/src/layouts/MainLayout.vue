@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <header>
+    <q-header>
       <nav>
         <a href="/" id="title">ف<span class="u-color">صل</span></a>
         <ul>
@@ -8,14 +8,24 @@
             <a href="/vetements">Vêt<span class="u-color">ements</span></a>
           </li>
           <li>
-            <a href="/">Pan<span class="u-color">ier</span></a>
+            <a @click="toggleRightDrawer">Pan<span class="u-color">ier</span></a>
           </li>
           <li>
             <a href="/profil">Pro<span class="u-color">fil</span></a>
           </li>
         </ul>
       </nav>
-    </header>
+    </q-header>
+
+
+    <q-drawer class="myDrawler" v-model="rightDrawerOpen" side="right" overlay behavior="mobile" elevated>
+      <!-- drawer content -->
+      <h6 @click="toggleRightDrawer" style="cursor: pointer">←</h6>
+      <h5>Panier</h5>
+
+
+      <CartItem />
+    </q-drawer>
 
     <q-page-container>
       <router-view />
@@ -55,6 +65,7 @@
 
 <script>
 import { defineComponent, ref } from "vue";
+import CartItem from '../components/CartItem.vue'
 import EssentialLink from "components/EssentialLink.vue";
 
 const linksList = [];
@@ -64,17 +75,18 @@ export default defineComponent({
 
   components: {
     // EssentialLink
+    CartItem
   },
 
   setup() {
-    const leftDrawerOpen = ref(false);
+    const rightDrawerOpen = ref(false)
 
     return {
       // essentialLinks: linksList,
-      leftDrawerOpen,
-      toggleLeftDrawer() {
-        leftDrawerOpen.value = !leftDrawerOpen.value;
-      },
+      rightDrawerOpen,
+      toggleRightDrawer () {
+        rightDrawerOpen.value = !rightDrawerOpen.value
+      }
     };
   },
 });
@@ -105,6 +117,7 @@ li {
 
 li a {
   margin-left: 40px;
+  cursor: pointer;
 }
 
 nav a {
@@ -116,4 +129,9 @@ nav a {
 #title {
   font-size: 28px;
 }
+
+.myDrawler h5 {
+  padding-left: 10px;
+}
+
 </style>

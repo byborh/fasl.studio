@@ -11,7 +11,6 @@ defineProps({
 <template>
   <div class="piece q-gutter-md items-start relative-position .col-6 .col-md-4">
     <img
-      @click="onClickAdd"
       :src="
         !isAdded
           ? '../../public/logo/panier.png'
@@ -19,6 +18,7 @@ defineProps({
       "
       alt="ajouter au panier"
       class="panier absolute top-0 left-0"
+      @click="onClickAdd"
     />
     <img :src="imageUrl" class="piece-img" />
     <p class="u-color">{{ title }}</p>
