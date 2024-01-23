@@ -3,10 +3,11 @@
     imageUrl="../../public/sneakers/sneakers-11.jpg"
     title="Reebok"
     price="180"
-    isAdded="false"
+    :isAdded="false"
+    :onClickAdd="test"
   />
-  <MyCard />
-  <MyCard />
+  <MyCard :onClickAdd="test" />
+  <MyCard :onClickAdd="test" />
   <MyCard />
   <MyCard />
   <MyCard />
@@ -22,5 +23,10 @@ export default {
   components: {
     MyCard,
   },
+};
+
+const test = () => {
+  alert("hello maan");
+  console.log("hello maan");
 };
 </script>

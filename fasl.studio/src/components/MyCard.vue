@@ -1,33 +1,17 @@
 <script setup>
-// export default {
-//   data() {
-//     return {
-//       text: "",
-//     };
-//   },
-//   methods: {
-//     message() {
-//       console.log("Message from MyCard.vue");
-//     },
-//   },
-// };
-
 defineProps({
   imageUrl: String,
   title: String,
   price: String,
   isAdded: Boolean,
+  onClickAdd: Function,
 });
-
-const tes = () => {
-  alert(1425);
-};
 </script>
 
 <template>
   <div class="piece q-gutter-md items-start relative-position .col-6 .col-md-4">
     <img
-      @click="tes"
+      @click="onClickAdd"
       :src="
         !isAdded
           ? '../../public/logo/panier.png'
