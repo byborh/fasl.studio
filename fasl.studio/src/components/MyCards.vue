@@ -32,4 +32,11 @@ export default {
     :isAdded="true"
     :onClickAdd="onClickAdd"
   />
+    <MyCard
+    imageUrl="../../public/sneakers/sneakers-12.jpg"
+    title="Vans"
+    price="70"
+    :isAdded="true"
+    :onClickAdd="onClickAdd"
+  />
 </template>

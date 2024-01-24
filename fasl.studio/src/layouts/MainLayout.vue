@@ -17,14 +17,14 @@
       </nav>
     </q-header>
 
-
+    <!--Panier-->
     <q-drawer class="myDrawler" v-model="rightDrawerOpen" side="right" overlay behavior="mobile" elevated>
       <!-- drawer content -->
-      <h6 @click="toggleRightDrawer" style="cursor: pointer">←</h6>
+      <h3 @click="toggleRightDrawer" class="btn-out">←</h3>
       <h5>Panier</h5>
 
 
-      <CartItem />
+      <MyDrawer />
     </q-drawer>
 
     <q-page-container>
@@ -65,8 +65,8 @@
 
 <script>
 import { defineComponent, ref } from "vue";
-import CartItem from '../components/CartItem.vue'
 import EssentialLink from "components/EssentialLink.vue";
+import MyDrawer from "../components/MyDrawer.vue"
 
 const linksList = [];
 
@@ -75,7 +75,7 @@ export default defineComponent({
 
   components: {
     // EssentialLink
-    CartItem
+      MyDrawer,
   },
 
   setup() {
@@ -134,4 +134,12 @@ nav a {
   padding-left: 10px;
 }
 
+.btn-out {
+  cursor: pointer;
+  width: 20%;
+  height: 20px;
+  margin: 5px;
+  font-size: x-large;
+  
+}
 </style>
