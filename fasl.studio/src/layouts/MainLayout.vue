@@ -20,11 +20,14 @@
     <!--Panier-->
     <q-drawer class="myDrawler" v-model="rightDrawerOpen" side="right" overlay behavior="mobile" elevated>
       <!-- drawer content -->
-      <h3 @click="toggleRightDrawer" class="btn-out">←</h3>
-      <h5>Panier</h5>
-
+      <div class="cart-head">
+        <h3 @click="toggleRightDrawer" class="btn-out">←</h3>
+        <h6>Panier</h6>
+      </div>
 
       <MyDrawer />
+      
+      
     </q-drawer>
 
     <q-page-container>

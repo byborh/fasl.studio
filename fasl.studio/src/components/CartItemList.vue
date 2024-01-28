@@ -15,4 +15,6 @@ export default {
 <template>
     <CartItem />
     <CartItem />
+    <CartItem />
+    <CartItem />
 </template>

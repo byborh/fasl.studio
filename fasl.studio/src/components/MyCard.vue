@@ -29,7 +29,7 @@ defineProps({
   </div>
 </template>
 
-<style>
+<style scoped>
 .piece {
   width: 200px;
   max-width: 220px;
