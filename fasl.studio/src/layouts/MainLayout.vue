@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <header>
+    <q-header>
       <nav>
         <a href="/" id="title">ف<span class="u-color">صل</span></a>
         <ul>
@@ -8,14 +8,27 @@
             <a href="/vetements">Vêt<span class="u-color">ements</span></a>
           </li>
           <li>
-            <a href="/">Pan<span class="u-color">ier</span></a>
+            <a @click="toggleRightDrawer">Pan<span class="u-color">ier</span></a>
           </li>
           <li>
             <a href="/profil">Pro<span class="u-color">fil</span></a>
           </li>
         </ul>
       </nav>
-    </header>
+    </q-header>
+
+    <!--Panier-->
+    <q-drawer class="myDrawler" v-model="rightDrawerOpen" side="right" overlay behavior="mobile" elevated>
+      <!-- drawer content -->
+      <div class="cart-head">
+        <h3 @click="toggleRightDrawer" class="btn-out">←</h3>
+        <h6>Panier</h6>
+      </div>
+
+      <MyDrawer />
+      
+      
+    </q-drawer>
 
     <q-page-container>
       <router-view />
@@ -56,6 +69,7 @@
 <script>
 import { defineComponent, ref } from "vue";
 import EssentialLink from "components/EssentialLink.vue";
+import MyDrawer from "../components/MyDrawer.vue"
 
 const linksList = [];
 
@@ -64,17 +78,18 @@ export default defineComponent({
 
   components: {
     // EssentialLink
+      MyDrawer,
   },
 
   setup() {
-    const leftDrawerOpen = ref(false);
+    const rightDrawerOpen = ref(false)
 
     return {
       // essentialLinks: linksList,
-      leftDrawerOpen,
-      toggleLeftDrawer() {
-        leftDrawerOpen.value = !leftDrawerOpen.value;
-      },
+      rightDrawerOpen,
+      toggleRightDrawer () {
+        rightDrawerOpen.value = !rightDrawerOpen.value
+      }
     };
   },
 });
@@ -105,6 +120,7 @@ li {
 
 li a {
   margin-left: 40px;
+  cursor: pointer;
 }
 
 nav a {
@@ -115,5 +131,18 @@ nav a {
 
 #title {
   font-size: 28px;
+}
+
+.myDrawler h5 {
+  padding-left: 10px;
+}
+
+.btn-out {
+  cursor: pointer;
+  width: 20%;
+  height: 20px;
+  margin: 5px;
+  font-size: x-large;
+  
 }
 </style>

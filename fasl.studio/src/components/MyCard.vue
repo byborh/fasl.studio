@@ -1,51 +1,23 @@
 <script setup>
-// export default {
-//   data() {
-//     return {
-//       text: "",
-//     };
-//   },
-//   methods: {
-//     message() {
-//       console.log("Message from MyCard.vue");
-//     },
-//   },
-// };
-
 defineProps({
   imageUrl: String,
   title: String,
   price: String,
   isAdded: Boolean,
+  onClickAdd: Function,
 });
-
-const tes = () => {
-  alert(1425);
-};
 </script>
 
 <template>
   <div class="piece q-gutter-md items-start relative-position .col-6 .col-md-4">
-    <img
-      @click="tes"
-      :src="
-        !isAdded
-          ? '../../public/logo/panier.png'
-          : '../../public/logo/panier-2.png'
-      "
-      alt="ajouter au panier"
-      class="panier absolute top-0 left-0"
-    />
     <img :src="imageUrl" class="piece-img" />
     <p class="u-color">{{ title }}</p>
-    <div class="price-div flex justify-between">
       <span>Prix :</span>
       <b>{{ price }}€</b>
-    </div>
   </div>
 </template>
 
-<style>
+<style scoped>
 .piece {
   width: 200px;
   max-width: 220px;
