@@ -1,12 +1,15 @@
 // Créer un serveur - EXPRESS JS
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
 const bodyParser = require("body-parser");
+
+module.exports = app;
 
 // Créer un port
 HOST = "localhost"
 PORT = 8080
 
+// Erreurs de CORS (Cross Origin Resource Sharing) - ça bloque les appels HTTP entre des serveurs différents. frontend <-- --> backend
 const header = (_, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
@@ -21,6 +24,7 @@ app.use(header)
 
 //Connecter un moteur de template
 app.set('view engine', 'ejs')
+
 //Ecrire css ici
 app.use(express.static(__dirname + '/public'))
 
@@ -30,9 +34,40 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-    res.send('<h1>Yes</h1>')
+app.post((req, res, next) => {
+    console.log(req.body)
+    res.status(201).json({
+        message: "Objet crée !"
+    })
 })
+
+app.get('/api/items', (req, res, next) => {
+    const items = [
+        {
+          id : 1,
+          title : "Jordan 4",
+          price : 400,
+          imageUrl : "../../public/sneakers/sneakers-1.jpg"
+        },{
+          id : 2,
+          price : 240,
+          title : "Jordan 3",
+          imageUrl : "../../public/sneakers/sneakers-2.jpg"
+        },{
+          id : 3,
+          title : "Jordan 11",
+          price : 160,
+          imageUrl : "../../public/sneakers/sneakers-3.jpg"
+        }
+    ]
+    res.status(200).json(items);
+});
+
+app.get('/', (req, res) => {
+    res.send('<h1>Hello maan</h1>')
+})
+
+// ------------------------------------
 
 app.post('/login', (req, res) => {
     try {
@@ -58,32 +93,4 @@ app.listen(PORT, () => {
 // Connecter Les fichiers aux pages
 // app.get('/', (req, res) => {
 //     res.render('home')
-// })
-
-// app.get('/nouveautes', (req, res) => {
-//     res.render('nouveautes')
-// })
-
-// app.get('/vetements', (req, res) => {
-//     res.render('vetements')
-// })
-
-// app.get('/accessoires', (req, res) => {
-//     res.render('accessoires')
-// })
-
-// app.get('/about', (req, res) => {
-//     res.render('about')
-// })
-
-// app.get('/contact', (req, res) => {
-//     res.render('contact')
-// })
-
-// app.get('/mon-compte', (req, res) => {
-//     res.render('mon-compte')
-// })
-
-// app.get('/panier', (req, res) => {
-//     res.render('panier')
 // })
