@@ -1,6 +1,6 @@
 <script>
 export default {
-    data () {
+    setup () {
         return {};
     },
     methods: {

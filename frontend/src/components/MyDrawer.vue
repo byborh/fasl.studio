@@ -2,7 +2,7 @@
 import CartItemList from "./CartItemList.vue"
 
 export default {
-    data () {
+    setup () {
         return;
     },
     components : {

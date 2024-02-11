@@ -9,43 +9,54 @@ export default {
   },
   setup() {
     const onClickAdd = () => {
+      if (isAdded == false) {
+        console.log("deviens true")
+        isAdded = true
+      } else {
+        console.log("deviens fasle")
+        isAdded = false
+      }
+
       alert("hello maan");
     }
 
-    return {onClickAdd};
+    return {
+      onClickAdd,
+    };
   },
   components: {
-    MyCard,
+    MyCard
   }
 };
 </script>
 
-
 <template>
-  <!-- <MyCard
-    imageUrl="../../public/sneakers/sneakers-11.jpg"
-    title="Reebok"
-    price="180" 
-    :isAdded="false"
-    :onClickAdd="onClickAdd"
-  />
-
-  <MyCard
-    imageUrl="../../public/sneakers/sneakers-10.jpg"
-    title="Jordan 4"
-    price="240"
-    :isAdded="true"
-    :onClickAdd="onClickAdd"
-  /> -->
   <MyCard
     v-for="item in items"
     
     :key="item.id"
     :imageUrl="item.imageUrl"
     :title="item.title"
-    :price="item.title"
+    :price="item.price"
     
-    :isAdded="false"
     :onClickAdd="onClickAdd"
   />
+  
 </template>
+
+
+
+<!-- //   sortedArray() {
+	// 	let sortedItems = this.items;
+		
+	// 	sortedItems = sortedItems.sort((a,b) => {
+	// 		let fa = a.title.toLowerCase(), fb = b.title.toLowerCase();
+	// 		if (fa < fb) {
+	// 			return -1
+	// 		}
+	// 		if (fa > fb) {
+	// 			return 1
+	// 		}
+	// 		return 0
+	// 	})
+	// } -->
