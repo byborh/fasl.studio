@@ -51,7 +51,7 @@ npm run dev
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",
     "redis": "^4.6.13"
-  },
+  }
 
 // Dépendances de Frontend
   "dependencies": {
@@ -62,6 +62,6 @@ npm run dev
     "vue": "^3.0.0",
     "vue-i18n": "^9.0.0",
     "vue-router": "^4.0.0"
-  },
+  }
 ```
 
