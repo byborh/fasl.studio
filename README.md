@@ -26,7 +26,7 @@ Nous accueillons toute contribution et suggestions. Si vous souhaitez contribuer
 ## Contact
 Pour toute question ou collaboration, n'hésitez pas à nous contacter à l'adresse hi.sejdiu@gmail.com.
 
-> Rejoignez-nous dans ce voyage où chaque tenue devient une expression de style, une ode à l'authenticité et à la beauté de la culture arabe. Fasl Studio est bien plus qu'une simple marque de vêtements, c'est une déclaration de style qui résonne au-delà des frontières, capturant l'essence même de la mode arabe contemporaine.
+Rejoignez-nous dans ce voyage où chaque tenue devient une expression de style, une ode à l'authenticité et à la beauté de la culture arabe. Fasl Studio est bien plus qu'une simple marque de vêtements, c'est une déclaration de style qui résonne au-delà des frontières, capturant l'essence même de la mode arabe contemporaine.
 
 
 ## Codage
