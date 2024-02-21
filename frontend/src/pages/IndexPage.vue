@@ -109,19 +109,9 @@
         />
 
         <q-card-section>
-          <div class="text-h6">Our Changing Planet</div>
+          <div class="text-h6">Our Changing Style</div>
           <div class="text-subtitle2">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            dignissimos recusandae est ratione nihil aliquid, quaerat tenetur
-            eveniet assumenda ducimus incidunt numquam voluptatum explicabo,
-            odio perferendis soluta? Possimus, itaque reiciendis! Lorem ipsum
-            dolor sit amet, consectetur adipisicing elit. Hic excepturi eveniet
-            amet illum. Ipsam ab quae vitae delectus, voluptatibus, atque
-            cupiditate eos quia voluptatum ducimus eaque quo laborum mollitia
-            repellendus! Lorem ipsum, dolor sit amet consectetur adipisicing
-            elit. Modi optio non repudiandae saepe incidunt exercitationem
-            temporibus, molestias eveniet ut, assumenda dolorem? Commodi iusto
-            est voluptates iste quidem minus laudantium vero!
+            Bienvenue chez Fasl Studio, où l'élégance et la tradition se rencontrent pour créer une expérience vestimentaire unique. Inspirée par la richesse de la culture arabe, notre marque incarne l'union entre la modernité et les racines profondes, offrant des vêtements qui reflètent la diversité et la sophistication.  Chez Fasl Studio, chaque pièce est soigneusement conçue pour capturer l'esprit des saisons arabes, évoquant un mélange harmonieux de textures, de motifs et de couleurs. Nous croyons en l'authenticité et la qualité, plaçant l'artisanat au cœur de notre processus de création. Rejoignez-nous dans ce voyage où chaque tenue raconte une histoire, où la mode devient une célébration de l'héritage arabe. Fasl Studio, bien plus qu'une marque de vêtements, une déclaration de style qui transcende les frontières culturelles.
           </div>
         </q-card-section>
       </q-card>

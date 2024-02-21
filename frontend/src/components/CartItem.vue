@@ -31,6 +31,7 @@ export default {
 .cartItem {
     display: flex;
     padding: 10px;
+    height: 150px;
     margin: 10px;
     border: 1px solid black;
     border-radius: 10px;
@@ -41,7 +42,6 @@ export default {
 .cartItemImg {
     width: 45%; 
 }
-
 .cartItemText {
     padding: 3px;
     overflow: hidden;

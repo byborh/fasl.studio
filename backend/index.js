@@ -1,16 +1,28 @@
-const express = require('express');
-const passport = require('passport')
+const express = require('express')
 const session = require('express-session')
+const passport = require('passport')
 const GoogleStrategy = require('passport-google-oauth20').Strategy
-const bodyParser = require("body-parser");
+const bodyParser = require('body-parser')
+const mysql = require('mysql')
+// const redis = require('redis')
+// import { createCluster } from 'redis'
 
 // ----------------------------------------------------------------------------
 
-const app = express();
+const app = express()
+// const client = redis.createClient()
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: 'P@55aran',
+  // database: 'kentfc',
+  // socket: ''
+})
+
 HOST = "localhost"
 PORT = 8080
 
-module.exports = app;
+module.exports = app
 
 // Erreurs de CORS (Cross Origin Resource Sharing) - ça bloque les appels HTTP entre des serveurs différents. frontend <--- ---> backend
 const header = (_, res, next) => {
@@ -49,34 +61,57 @@ app.get('/', (req, res) => {
   res.send('<h1>Hello maan</h1>')
 })
 
+connection.connect((err) => {
+  if(err) {
+    console.log('Erreur de connexion : ' + err.stack)
+    return;
+  }
+  console.log('Connexion réussie à la bdd')
+})
+
+connection.query("SELECT * FROM players", (err, rows, fields) => {
+  if(err) throw err
+  console.log('Les données sont : ' + rows)
+})
+
 app.get('/api/items', (req, res, next) => {
     const items = [
-        {
-          id : 1,
-          title : "Jordan 4",
-          price : 400,
-          imageUrl : "/public/sneakers/sneakers-1.jpg"
-        },{
-          id : 2,
-          title : "Salomon xt Rush",
-          price : 240,
-          imageUrl : "/public/sneakers/sneakers-2.jpg"
-        },{
-          id : 3,
-          title : "Tordan 11",
-          price : 160,
-          imageUrl : "/public/sneakers/sneakers-11.jpg"
-        }, {
-          id : 4,
-          title : "Newbalance 2002r",
-          price : 170,
-          imageUrl : "/public/sneakers/sneakers-4.jpg"
-        },{
-          id : 5,
-          title : "Newbalance 610v5",
-          price : 110,
-          imageUrl : "/public/sneakers/sneakers-5.jpg"
-        }
+      {
+        id : 1,
+        title : "Jordan 4",
+        price : 400,
+        imageUrl : "/public/sneakers/sneakers-1.jpg"
+      },{
+        id : 2,
+        title : "Salomon xt Rush",
+        price : 240,
+        imageUrl : "/public/sneakers/sneakers-2.jpg"
+      },{
+        id : 3,
+        title : "Tordan 11",
+        price : 160,
+        imageUrl : "/public/sneakers/sneakers-11.jpg"
+      }, {
+        id : 4,
+        title : "Newbalance 2002r",
+        price : 170,
+        imageUrl : "/public/sneakers/sneakers-4.jpg"
+      },{
+        id : 5,
+        title : "Newbalance 610v5",
+        price : 110,
+        imageUrl : "/public/sneakers/sneakers-5.jpg"
+      },{
+        id : 6,
+        title : "Deseign Pull",
+        price : 40,
+        imageUrl : "/public/pull/pull-1.jpg"
+      },{
+        id : 7,
+        title : "Deseign Pull",
+        price : 35,
+        imageUrl : "/public/pull/pull-5.jpg"
+      }
     ]
     res.status(200).json(items);
 });

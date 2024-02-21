@@ -1,16 +1,3 @@
-<template>
-  <div class="body-profil">
-    <div class="background">
-      <div class="shape"></div>
-      <div class="shape"></div>
-    </div>
-    <form>
-      <!-- <registerClient /> -->
-      <loginClient />
-    </form>
-  </div>
-</template>
-
 <script>
 import { ref, onMounted } from "vue";
 
@@ -19,19 +6,80 @@ import loginClient from 'src/components/LoginClient.vue'
 
 export default {
   setup() {
+
+    onMounted(async () => {
+      try {
+        if(this.isUser == false) { // vérifie si l'utilisateur existe
+          this.verifyMail = true // si non, alors laisser afficher le 'form' de vérification
+        } else {
+          this.verifyMail = false // si oui, alorsne plus afficher le 'form' de vérification
+        }
+      } catch(err) {
+        console.log(err)
+      }
+    })
+
     return {
       user : {
         email: '',
         password: ''
-      }
+      },
+
+      isUser: false,
+      verifyMail: true
     };
   },
   components: {
     // registerClient,
     loginClient
+  },
+  methods: {
+    verifyIdentity() {
+      if(this.isUser == false) { // vérifie si l'utilisateur existe
+          this.verifyMail = false // si non, alors laisser afficher le 'form' de vérification
+        } else {
+          this.verifyMail = false // si oui, alorsne plus afficher le 'form' de vérification
+        }
+    },
+    commeBackToEmailAsking() {
+      this.verifyMail = true
+    }
   }
 };
 </script>
+
+<template>
+  <div class="body-profil">
+    <div class="background">
+      <div class="shape"></div>
+      <div class="shape"></div>
+    </div>
+    <form class="profil-form">
+
+      <div class="email-asking" v-show="verifyMail">
+        <h3>فصل</h3>
+
+        <label for="username">Saisis ton adresse e-mail pour nous rejoindre ou te connecter.</label>
+        <input type="email" v-model="email" placeholder="Saissisez votre mail" id="email" />
+
+        <p>En continuant, tu acceptes les conditions d'utilisation et tu confirmes avoir lu la politique de confidentialité de Nike.</p>
+
+        <button @click="verifyIdentity()">Continuer</button>
+      </div>
+      
+      <div class="afterVerification" v-show="!verifyMail">
+        <button @click="commeBackToEmailAsking()" class="btn-out">←</button>
+
+        <!-- <registerClient /> -->
+        <loginClient />
+      </div>
+
+      <div class="social">
+        <button @click="loginWithGoogle()">Se connecter avec <u>Google</u></button>
+      </div>
+    </form>
+  </div>
+</template>
 
 <style scoped>
 /* Collage */
