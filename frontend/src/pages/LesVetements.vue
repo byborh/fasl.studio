@@ -1,6 +1,5 @@
 <script>
-
-import { ref, onMounted } from "vue";
+import { ref, onMounted, provide } from "vue";
 import MyCards from "../components/MyCards.vue";
 import axios from 'axios';
 
@@ -10,45 +9,62 @@ const items = ref ([ // ref met/transforme tout en objet : [ value : {} ]
 
 export default {
   setup() {
-    const test = ref()
-
-    const t = () => {
-      alert("hello maan");
-    }
-
-    onMounted(async () => { // A L'ACTUALISATION  DE LA PAGE, onMounted FONCTIONNE
-      // Récupérer le fichier JSON du backend /api/items avec le moyen fetch
-      // fetch("http://localhost:8080/api/items")
-      //   .then((res) => res.json())
-      //   .then((data) => {
-      //     console.log(data) 
-      //   })
-      
-      // Récupérer le fichier JSON du backend /api/items avec le moyen axios
-      // axios.get('http://localhost:8080/api/items').then((resp) => console.log(resp.body))
-
-      // Faire la même chose qu'au dessus avec axios mais async
+    const fetchItems = async () => {
       try {
         const { data } = await axios.get('http://localhost:8080/api/items')
         
-        items.value = data
+        items.value = data.map((obj) => ({
+          ...obj,
+          isAdded: false
+        }))
 
-        for(var i in items.value) {
-          const elementRestants = this.elementRestants + 1
-
-          console.log(elementRestants)
-        }
-
+        const parentItems = items.value
       } catch(err) {
         console.log(err)
       }
+    }
+
+    const fetchFavorites = async () => {
+      try{
+        const { data: favorites } = await axios.get('http://localhost:8080/api/favorites')
+        
+        items.value = items.value.map((item) => {
+          const favorite = favorites.find((favorite) => favorite.parentId === item.id)
+        
+          if(!favorite) {
+            return item
+          }
+          return {
+            ...item,
+            isAdded: true
+          }
+        })
+      } catch(err) {
+        console.log(err)
+      }
+    }
+
+    const addToPanier = async (item) => {
+      item.isAdded = !item.isAdded
+
+      console.log(item)
+    }
+
+    onMounted(async () => {
+      await fetchItems()
+      await fetchFavorites()
     })
+
+    provide('addToPanier', addToPanier) // exporter/récupérer qqch de global :
+                                        // component1 -> component2 -> component3 -> component4
+                                        // component1 -----------------------------> component4
 
     return {
       items,
       trier: '',
       searchEl: '',
-      elementRestants: 0
+      elementRestants: 0,
+      parentItems: ''
     };
   },
   components: {
@@ -95,9 +111,11 @@ export default {
 
         items.value = filteredItems
 
-
+        if (filteredItems == 0) {
+          alert("y'a plus rien")
+          items.value = parentItems
+        }
       }
-
     }, 
   }
 };
@@ -126,7 +144,7 @@ export default {
     </div>
     <div class="pieces row justify-center">
     
-      <MyCards :items="items" />
+      <MyCards :items="items" @addToPanier="addToPanier" />
     </div>
 
     <br /><br /><br /><br /><br /><br /><br />

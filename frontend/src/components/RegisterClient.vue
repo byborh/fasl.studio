@@ -36,9 +36,6 @@ export default {
   <label for="passwordRe">Mot de passe</label>
   <input type="password" v-model="passwordRE" placeholder="Répeter votre mot de passe" id="password" minlength="8" />
 
-
-  <!-- <input type="checkbox" /> Accepter les conditions d'utilisations -->
-
   <button @click="seConnecter()" >S'inscrire</button>
       
   <div class="social">
@@ -96,29 +93,5 @@ button {
 button:hover {
   background-color: #f0efeb;
   transition: 0.6s;
-}
-.social {
-  margin-top: 30px;
-  display: flex;
-}
-.social div {
-  width: 100%;
-  border-radius: 3px;
-  padding: 5px 10px 10px 5px;
-  background-color: rgba(255, 255, 255, 0.27);
-  color: #eaf0fb;
-  text-align: center;
-  cursor: pointer;
-}
-.social div:hover {
-  background-color: rgba(255, 255, 255, 0.47);
-
-  transition: 0.6s;
-}
-.social .fb {
-  margin-left: 25px;
-}
-.social i {
-  margin-right: 4px;
 }
 </style>

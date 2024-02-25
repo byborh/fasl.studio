@@ -3,7 +3,12 @@ const session = require('express-session')
 const passport = require('passport')
 const GoogleStrategy = require('passport-google-oauth20').Strategy
 const bodyParser = require('body-parser')
-const mysql = require('mysql')
+
+const mongoose = require('./db')
+const User = require('./db/user')
+
+
+// const mysql = require('mysql')
 // const redis = require('redis')
 // import { createCluster } from 'redis'
 
@@ -11,13 +16,13 @@ const mysql = require('mysql')
 
 const app = express()
 // const client = redis.createClient()
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'P@55aran',
-  // database: 'kentfc',
-  // socket: ''
-})
+// const connection = mysql.createConnection({
+//   host: 'localhost',
+//   user: 'root',
+//   password: 'P@55aran',
+//   // database: 'kentfc',
+//   // socket: ''
+// })
 
 HOST = "localhost"
 PORT = 8080
@@ -57,22 +62,57 @@ app.post((req, res, next) => {
   })
 })
 
-app.get('/', (req, res) => {
-  res.send('<h1>Hello maan</h1>')
-})
+// Vérifier si l'utilisateur existe dans la base de donnée
+app.post('/user', async (req, res) => {
+  try {
+    // Vérifier si l'email existe déjà dans la base de données
+    const existingUser = await User.findOne({ email: req.body.email });
+    if (existingUser) {
+      res.json({ userExists: true });
+      // L'email existe déjà, retourne une réponse d'erreur
+    } else {
+      res.json({ userExists: false });
+    }
 
-connection.connect((err) => {
-  if(err) {
-    console.log('Erreur de connexion : ' + err.stack)
-    return;
+  } catch (err) {
+    console.log(err)
+    res.json({ userExists: false });
   }
-  console.log('Connexion réussie à la bdd')
 })
 
-connection.query("SELECT * FROM players", (err, rows, fields) => {
-  if(err) throw err
-  console.log('Les données sont : ' + rows)
+// Inscription
+app.post('/user/register', async (req, res) => {
+  try {
+    // Créer un nouvel utilisateur avec les données du corps de la requête
+    const newUser = new User(req.body);
+
+    // Sauvegarder l'utilisateur dans la base de données
+    const savedUser = await newUser.save();
+
+    // Envoie une réponse avec l'ID de l'utilisateur nouvellement créé
+    res.json({ id: savedUser._id });
+  } catch (error) {
+    console.error("Erreur lors de l'enregistrement de l'utilisateur :", error);
+    res.status(500).json({ error: "Erreur lors de l'enregistrement de l'utilisateur" });
+  }
+});
+
+app.get('/user/login', async (req, res) => {
+  res.send('<h1>user/login</h1>')
 })
+
+// connection.connect((err) => {
+//   if(err) {
+//     console.log('Erreur de connexion : ' + err.stack)
+//     return;
+//   }
+//   console.log('Connexion réussie à la bdd')
+// })
+
+// connection.query("SELECT * FROM players", (err, rows, fields) => {
+//   if(err) throw err
+//   console.log('Les données sont : ' + rows)
+// })
 
 app.get('/api/items', (req, res, next) => {
     const items = [
@@ -116,6 +156,19 @@ app.get('/api/items', (req, res, next) => {
     res.status(200).json(items);
 });
 
+app.get('/api/favorites', (req, res, next) => {
+  favorites = [
+    {
+      id: 1,
+      parentId: 3
+    },{
+      id: 2,
+      parentId: 6
+    }
+  ]
+  res.status(200).json(favorites)
+})
+
 passport.use(new GoogleStrategy({
   clientID: "137321509489-6eu63q9jr6d2j78h1o1u0ana1h6l9ihr.apps.googleusercontent.com",
   clientSecret: "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",
@@ -136,14 +189,28 @@ passport.use(new GoogleStrategy({
 app.get('/auth/google/callback',
   passport.authenticate('google', {
     failureRedirect: '/auth/google/failure',
-    successRedirect: '/auth/google/succes',
-    session: true
+    successRedirect: '/dashboard',
+    session: false //true
   })
   // (req, res) => {
   //   // Redirection après une connexion réussie
   //   res.redirect('/dashboard');
   // }
 );
+
+app.get('/dashboard', (req, res) => {
+  // Assure-toi que l'utilisateur est connecté
+  if (req.isAuthenticated()) {
+    // Accède aux informations du profil
+    const userProfile = req.user;
+    
+    // Fais ce que tu veux avec les données du profil
+    res.send(`Bienvenue sur le tableau de bord, ${userProfile.displayName}!`);
+  } else {
+    // Redirige l'utilisateur vers la page de connexion s'il n'est pas authentifié
+    res.redirect('/login');
+  }
+});
 
 // ----------------------------------------------------------------------------
 

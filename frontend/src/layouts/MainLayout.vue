@@ -27,7 +27,6 @@
 
       <MyDrawer />
       
-      
     </q-drawer>
 
     <q-page-container>
@@ -67,7 +66,7 @@
 </template>
 
 <script>
-import { defineComponent, ref } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
 import EssentialLink from "components/EssentialLink.vue";
 import MyDrawer from "../components/MyDrawer.vue"
 

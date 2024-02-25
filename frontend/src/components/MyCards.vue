@@ -1,6 +1,7 @@
 <script>
 import MyCard from "src/components/MyCard.vue";
 
+
 export default {
   props: { // = defineProps
     items: {
@@ -8,26 +9,31 @@ export default {
     }
   },
   setup() {
-    const onClickAdd = () => {
-      if (isAdded == false) {
-        console.log("deviens true")
-        isAdded = true
-      } else {
-        console.log("deviens fasle")
-        isAdded = false
-      }
+    const emit = defineEmits(['addToPanier'])
+    // const onClickAdd = () => {
+    //   if (isAdded == false) {
+    //     console.log("deviens true")
+    //     isAdded = true
+    //   } else {
+    //     console.log("deviens false")
+    //     isAdded = false
+    //   }
 
-      alert("hello maan");
-    }
+    //   alert("hello maan");
+    // }
 
     return {
-      onClickAdd,
+      // onClickAdd
     };
   },
   components: {
     MyCard
   }
 };
+
+// const addToPanier = inject('addToPanier') // exporter/récupérer qqch de global :
+                                          // component1 -> component2 -> component3 -> component4
+                                          // component1 -----------------------------> component4
 </script>
 
 <template>
@@ -35,28 +41,13 @@ export default {
     v-for="item in items"
     
     :key="item.id"
+    :id="item.id"
     :imageUrl="item.imageUrl"
     :title="item.title"
     :price="item.price"
+    :isAdded="item.isAdded"
     
-    :onClickAdd="onClickAdd"
+    :onClickAdd="() => emit('addToPanier', item)"
   />
   
 </template>
-
-
-
-<!-- //   sortedArray() {
-	// 	let sortedItems = this.items;
-		
-	// 	sortedItems = sortedItems.sort((a,b) => {
-	// 		let fa = a.title.toLowerCase(), fb = b.title.toLowerCase();
-	// 		if (fa < fb) {
-	// 			return -1
-	// 		}
-	// 		if (fa > fb) {
-	// 			return 1
-	// 		}
-	// 		return 0
-	// 	})
-	// } -->

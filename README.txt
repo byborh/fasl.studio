@@ -1,4 +1,3 @@
-
 gérer une bdd en créant des fichiers :
 sql lite
 
@@ -11,12 +10,17 @@ avec un mdp configuré au début
 
 redis : inscription / connexion manuel
 
-
 docker descktop = window
 
+token local_storage === cookies
+----------------------------------------
+JWT = token
 
-token local_storage == cookies
+=== badge ===
 
+tant que token est OK
+l'user peut se balader dans le site
+----------------------------------------
 
 app
 .get( '/auth/google/callback',
@@ -37,8 +41,20 @@ app
 })
 
 
+----------------------------------
+DockerFile:
+génére des fichiers
 
 
+  docker-compose:
+créer/lancer l'image crée dans un containeur
+comporte (infrastructure de microstructure) plusieurs images
+
+ex de microservices avec des adresse IP disctincts:
+-mongo (adresse PRV (localhost))
+-mogo-express (adresse PRV (localhost))
+-fasl.studio/frontend (adresse PUBLIC)
+-fasl.studio/backend (adresse PRV (localhost))
 
 
 

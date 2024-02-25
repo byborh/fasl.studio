@@ -1,10 +1,11 @@
 <script setup>
 defineProps({
+  id: Number,
   imageUrl: String,
   title: String,
   price: String,
   isAdded: Boolean,
-  onClickAdd: Function,
+  onClickAdd: Function
 });
 </script>
 
@@ -13,12 +14,12 @@ defineProps({
     <img
       :src="
         !isAdded
-          ? '../../public/logo/panier.png'
-          : '../../public/logo/panier-2.png'
+          ? '/public/logo/panier.png'
+          : '/public/logo/panier-2.png'
       "
       alt="ajouter au panier"
       class="panier absolute top-0 left-0"
-      @click="onClickAdd"
+      @click="onClickAdd()"
     />
     <img :src="imageUrl" class="piece-img" />
     <p class="u-color">{{ title }}</p>
