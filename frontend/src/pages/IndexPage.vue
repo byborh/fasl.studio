@@ -2,58 +2,31 @@
   <div id="app">
     <!--BODY DU SITE-->
     <!-- Changeur d'image -->
-    <div class="changeur-d-image">
-      <!-- q-carousel documentation: https://quasar.dev/vue-components/carousel/ -->
-      <q-carousel
-        animated
-        v-model="slide"
-        navigation
-        infinite
-        :autoplay="autoplay"
-        arrows
-        transition-prev="slide-right"
-        transition-next="slide-left"
-        @update:model-value="refresh()"
-        @mouseenter="autoplay = false"
-        @mouseleave="autoplay = true"
-        style="height: 100vh; z-index: -5"
-      >
-        <q-carousel-slide
-          v-for="(url, i) in urls"
-          :key="i"
-          :name="i + 1"
-          :img-src="url"
-        />
-      </q-carousel>
-    </div>
+    <img class="logo-fasl.studio" src="../../public/logo-green-red.png" alt="Logo Fasl.studio">
     <br /><br />
     <!-- Who Part -->
     <div class="who-part">
       <div class="who-part-img">
         <img
-          src="../../public/365392420_1660761207734436_3165609358977754361_n.jpg"
+          src="../../public/img1.jpg"
           alt="test"
         />
       </div>
       <div class="who-part-text">
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Est labore
-          iure, delectus ab numquam enim recusandae pariatur illum iusto qui
-          nemo. Ut eius natus sit nostrum unde mollitia quibusdam illum!
+          Tous les détails sont fait avec soin et du coeur.
         </p>
       </div>
     </div>
     <div class="who-part">
       <div class="who-part-text">
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Est labore
-          iure, delectus ab numquam enim recusandae pariatur illum iusto qui
-          nemo. Ut eius natus sit nostrum unde mollitia quibusdam illum!
+          À travers l'écran émerge une esthétique qui transcende l'éphémère.
         </p>
       </div>
       <div class="who-part-img">
         <img
-          src="../../public/408210154_902853758043645_7692857693830266755_n.jpg"
+          src="../../public/img2.jpg"
           alt="test"
         />
       </div>
@@ -62,6 +35,12 @@
     <!-- How Text -->
     <div class="how">
       <div class="how-text">
+        <h6>Il y'en a qui regardent et Il y'en a qui <u>portent</u></h6>
+        <p>
+          Bienvenue chez Fasl Studio, où l'élégance et la tradition se rencontrent pour créer une expérience vestimentaire unique. Inspirée par la richesse de la culture arabe, notre marque incarne l'union entre la modernité et les racines profondes, offrant des vêtements qui reflètent la diversité et la sophistication.  Chez Fasl Studio, chaque pièce est soigneusement conçue pour capturer l'esprit des saisons arabes, évoquant un mélange harmonieux de textures, de motifs et de couleurs. Nous croyons en l'authenticité et la qualité, plaçant l'artisanat au cœur de notre processus de création. Rejoignez-nous dans ce voyage où chaque tenue raconte une histoire, où la mode devient une célébration de l'héritage arabe. Fasl Studio, bien plus qu'une marque de vêtements, une déclaration de style qui transcende les frontières culturelles.
+        </p>
+      </div>
+      <!-- <div class="how-text">
         <h6>Lorem</h6>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil
@@ -69,16 +48,7 @@
           consequatur odit ab reiciendis sed labore non delectus similique
           deleniti nesciunt itaque repellendus!
         </p>
-      </div>
-      <div class="how-text">
-        <h6>Lorem</h6>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil
-          excepturi veritatis neque, voluptate minus repudiandae, eaque amet
-          consequatur odit ab reiciendis sed labore non delectus similique
-          deleniti nesciunt itaque repellendus!
-        </p>
-      </div>
+      </div> -->
       <!-- <div class="how-text">
         <h6>Lorem</h6>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil excepturi veritatis neque, voluptate minus repudiandae, eaque amet consequatur odit ab reiciendis sed labore non delectus similique deleniti nesciunt itaque repellendus!</p>
@@ -92,7 +62,7 @@
       <h6>Video de la fabrication</h6>
       <video playsinline autoplay muted loop poster="" style="width: 100%">
         <source
-          src="../../public/logo/fasl-studio-video.mp4"
+          src="../../public/video1.mp4"
           type="video/mp4"
         />
         Your browser does not support the video tag.
@@ -104,7 +74,7 @@
     <div class="q-pa-md">
       <q-card class="my-card">
         <q-parallax
-          src="../../public/test/marca_stussy_historia_streetwear_2218.webp"
+          src="../../public/img3.jpg"
           :height="400"
         />
 
@@ -121,7 +91,7 @@
       <div class="q-col-gutter-md row items-start">
         <div class="col-6">
           <q-img
-            src="../../public/408210154_902853758043645_7692857693830266755_n.jpg"
+            src="../../public/img4.jpg"
             class="img-4-style"
           >
             <div class="absolute-full text-subtitle2 flex flex-center">
@@ -131,19 +101,19 @@
         </div>
         <div class="col-6">
           <q-img
-            src="../../public/383635202_291013390465448_2162049595933381589_n.jpg"
+            src="../../public/img2.jpg"
             class="img-4-style"
           />
         </div>
         <div class="col-6">
           <q-img
-            src="../../public/383635202_291013390465448_2162049595933381589_n.jpg"
+            src="../../public/img2.jpg"
             class="img-4-style"
           />
         </div>
         <div class="col-6">
           <q-img
-            src="../../public/383635202_291013390465448_2162049595933381589_n.jpg"
+            src="../../public/img1.jpg"
             class="img-4-style"
           >
             <div class="absolute-full text-subtitle2 flex flex-center">
@@ -195,32 +165,10 @@ export default defineComponent({
   width: 100%;
 }
 
-/* Changeur d'image */
-.changeur-d-image {
-  height: auto;
-  width: 100%;
-  top: 0;
-  overflow: hidden;
-}
-
-.img-changeur-d-image {
-  min-height: 800px;
-  /* height: 100%; */
-  max-width: 120%;
-  min-width: 100%;
-}
-
-.principal-text {
-  top: 50%;
-  left: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.test1 {
-  left: 50%;
-  top: 50%;
+/* */
+img .logo-fasl.studio {
+  width: 200px;
+  height: 600px;
 }
 
 /* Who Row */

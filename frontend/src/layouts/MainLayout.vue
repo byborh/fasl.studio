@@ -41,7 +41,7 @@
             src="https://www.pngmart.com/files/20/TikTok-Logo-PNG.png"
             alt="tiktok_logo"
         /></a>
-        <a href="https://www.instagram.com/fasl.studio  /"
+        <a href="https://www.instagram.com/fasl.studio/"
           ><img
             src="https://www.pngmart.com/files/13/Insta-Logo-PNG-Pic.png"
             alt="Instagram_logo"
@@ -76,8 +76,8 @@ export default defineComponent({
   name: "MainLayout",
 
   components: {
-    // EssentialLink
-      MyDrawer,
+    // EssentialLink,
+    MyDrawer
   },
 
   setup() {

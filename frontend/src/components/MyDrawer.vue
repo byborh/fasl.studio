@@ -1,9 +1,59 @@
 <script>
+import {ref, onMounted} from 'vue'
 import CartItemList from "./CartItemList.vue"
+import axios from 'axios'
+
 
 export default {
     setup () {
-        return;
+
+        const itemsInPanier = ref([])
+
+        const fetchPanier = async () => {
+            try {
+                const { data } = await axios.get('http://localhost:8080/api/panier')
+                itemsInPanier.value = Array.from(new Set(data.map(obj => obj.parentId)))
+                console.log(itemsInPanier.value) // A RECUPERER LE PARENTID
+            } catch (err) {
+                console.log(err)
+            }
+        }
+
+        const fetchItemsDetails = async () => {
+            try {
+                if(itemsInPanier.value.length > 0) {
+                    const { data } = await axios.get('http://localhost:8080/api/items', {
+                        params: {
+                            ids: itemsInPanier.value.join(',')
+                        }
+                    })
+                    const filteredItems = data.filter(item => itemsInPanier.value.includes(item.id))
+                    
+                    console.log(filteredItems)
+                    console.log(data)
+                    console.log(itemsInPanier.value)
+                    // return filteredItems
+
+                    //console.log(data) // tous les vetêments
+                    //console.log(filteredItems) // que les vetêments ajouté dans le panier
+                }
+                return []
+            } catch (err) {
+                console.log(err)
+                return []
+            }
+        }
+
+
+
+        onMounted(async () => {
+            await fetchPanier()
+            await fetchItemsDetails()
+        })
+
+        return{
+            itemsInPanier
+        }
     },
     components : {
         CartItemList,
@@ -14,8 +64,12 @@ export default {
 
 <template>
     <!--Liste des éléments-->
-    <CartItemList />
-
+    <div v-if="itemsInPanier.length>0">
+        <CartItemList :itemsInPanier="itemsInPanier" />
+    </div>
+    <div v-else>
+        <p>Aucun élément dans le panier :(</p>
+    </div>
     <div style="margin-top: 30px">
         <div class="total-price flex">
             <span>Impôts :</span>

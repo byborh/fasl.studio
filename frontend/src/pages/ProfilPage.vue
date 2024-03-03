@@ -10,8 +10,8 @@ export default {
   setup() {
     onMounted(async () => {
       try {
-        this.showRegistration = !this.showRegistration
-        this.showLogin = !this.showLogin
+        // this.showRegistration = !this.showRegistration
+        // this.showLogin = !this.showLogin
       } catch(err) {
         console.log(err)
       }
@@ -45,9 +45,11 @@ export default {
 
     verifyIdentity() {
       try {
-        const response = axios.post("http://localhost:8080/user", {email : this.email})
+        const response = axios.post("http://localhost:8080/user/register", {
+          email : this.email
+        })
         const userExists = response.data.userExists
-        
+
         // Mise à jour de la visibilité des divs en fonction du résultat
         this.showRegistration = !userExists;
         this.showLogin = userExists;
@@ -57,9 +59,9 @@ export default {
         this.showLogin = true;
       }
 
-      alert("userExists : " + this.userExists)
-      alert("Inscription : " + this.showRegistration)
-      alert("Connexion : " + this.showLogin)
+      // alert("userExists : " + this.userExists)
+      // alert("Inscription : " + this.showRegistration)
+      // alert("Connexion : " + this.showLogin)
 
 
 
@@ -129,7 +131,7 @@ export default {
         <input type="password" v-model="loginPassword" placeholder="Taper votre mot de passe" minlength="8" />
       </div>
 
-      <p>En continuant, tu acceptes les conditions d'utilisation et tu confirmes avoir lu la politique de confidentialité de Nike.</p>
+      <p>En continuant, tu acceptes les conditions d'utilisation et tu confirmes avoir lu la politique de confidentialité de Fasl.Studio.</p>
 
       <button @click="verifyIdentity()">Continuer</button>
 

@@ -4,8 +4,9 @@ import MyCards from "../components/MyCards.vue";
 import axios from 'axios';
 
 const items = ref ([ // ref met/transforme tout en objet : [ value : {} ]
-
 ])
+
+const cart = ref ([])
 
 export default {
   setup() {
@@ -15,28 +16,31 @@ export default {
         
         items.value = data.map((obj) => ({
           ...obj,
-          isAdded: false
+          isAdded: false,
+          favoriteId: null
         }))
 
         const parentItems = items.value
       } catch(err) {
         console.log(err)
+        
       }
     }
 
-    const fetchFavorites = async () => {
+    const fetchPanier = async () => {
       try{
-        const { data: favorites } = await axios.get('http://localhost:8080/api/favorites')
+        const { data: panier } = await axios.get('http://localhost:8080/api/panier')
         
         items.value = items.value.map((item) => {
-          const favorite = favorites.find((favorite) => favorite.parentId === item.id)
+          const favorite = panier.find((favorite) => favorite.parentId === item.id)
         
           if(!favorite) {
             return item
           }
           return {
             ...item,
-            isAdded: true
+            isAdded: true,
+            favoriteId: favorite.id
           }
         })
       } catch(err) {
@@ -45,14 +49,34 @@ export default {
     }
 
     const addToPanier = async (item) => {
-      item.isAdded = !item.isAdded
+      try {
+        if(!item.isAdded){
+          const obj2 = {
+            parentId: item.id
+          }
 
-      console.log(item)
+          item.isAdded = true
+
+          const { data } = await axios.post('http://localhost:8080/api/panier/ajouter', obj2)
+
+          item.favoriteId = data.id
+
+        } else {
+          item.isAdded = false
+          await axios.delete(`http://localhost:8080/api/panier/retirer/${item.favoriteId}`)
+          item.favoriteId = null
+        }
+
+      } catch (err) {
+        console.log(err)
+      }
+
+      // item.isAdded = !item.isAdded
     }
 
     onMounted(async () => {
       await fetchItems()
-      await fetchFavorites()
+      await fetchPanier()
     })
 
     provide('addToPanier', addToPanier) // exporter/récupérer qqch de global :
@@ -64,7 +88,8 @@ export default {
       trier: '',
       searchEl: '',
       elementRestants: 0,
-      parentItems: ''
+      parentItems: '',
+      addToPanier
     };
   },
   components: {

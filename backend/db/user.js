@@ -5,6 +5,7 @@
 //     password: String
 // });
 
+
 const mongoose = require('./index');
 
 const userSchema = new mongoose.Schema({

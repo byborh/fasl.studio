@@ -4,25 +4,14 @@ const passport = require('passport')
 const GoogleStrategy = require('passport-google-oauth20').Strategy
 const bodyParser = require('body-parser')
 
+
 const mongoose = require('./db')
 const User = require('./db/user')
-
-
-// const mysql = require('mysql')
-// const redis = require('redis')
-// import { createCluster } from 'redis'
+const Panier = require('./db/panier')
 
 // ----------------------------------------------------------------------------
 
 const app = express()
-// const client = redis.createClient()
-// const connection = mysql.createConnection({
-//   host: 'localhost',
-//   user: 'root',
-//   password: 'P@55aran',
-//   // database: 'kentfc',
-//   // socket: ''
-// })
 
 HOST = "localhost"
 PORT = 8080
@@ -101,72 +90,73 @@ app.get('/user/login', async (req, res) => {
   res.send('<h1>user/login</h1>')
 })
 
-// connection.connect((err) => {
-//   if(err) {
-//     console.log('Erreur de connexion : ' + err.stack)
-//     return;
-//   }
-//   console.log('Connexion réussie à la bdd')
-// })
-
-// connection.query("SELECT * FROM players", (err, rows, fields) => {
-//   if(err) throw err
-//   console.log('Les données sont : ' + rows)
-// })
-
 app.get('/api/items', (req, res, next) => {
     const items = [
       {
+        id : 0,
+        title : "Tee-shit Oversize Verte",
+        price : 25,
+        imageUrl : "/public/piece-green-red-front.webp"
+      },{
         id : 1,
-        title : "Jordan 4",
-        price : 400,
-        imageUrl : "/public/sneakers/sneakers-1.jpg"
-      },{
-        id : 2,
-        title : "Salomon xt Rush",
-        price : 240,
-        imageUrl : "/public/sneakers/sneakers-2.jpg"
-      },{
-        id : 3,
-        title : "Tordan 11",
-        price : 160,
-        imageUrl : "/public/sneakers/sneakers-11.jpg"
-      }, {
-        id : 4,
-        title : "Newbalance 2002r",
-        price : 170,
-        imageUrl : "/public/sneakers/sneakers-4.jpg"
-      },{
-        id : 5,
-        title : "Newbalance 610v5",
-        price : 110,
-        imageUrl : "/public/sneakers/sneakers-5.jpg"
-      },{
-        id : 6,
-        title : "Deseign Pull",
-        price : 40,
-        imageUrl : "/public/pull/pull-1.jpg"
-      },{
-        id : 7,
-        title : "Deseign Pull",
-        price : 35,
-        imageUrl : "/public/pull/pull-5.jpg"
+        title : "Tee-shit Oversize Rose",
+        price : 25,
+        imageUrl : "/public/piece-pink-front.webp"
       }
     ]
     res.status(200).json(items);
 });
 
-app.get('/api/favorites', (req, res, next) => {
-  favorites = [
-    {
-      id: 1,
-      parentId: 3
-    },{
-      id: 2,
-      parentId: 6
-    }
-  ]
-  res.status(200).json(favorites)
+
+  // panier = [
+  //   {
+  //     id: 1,
+  //     parentId: 1
+  //   },{
+  //     id: 2,
+  //     parentId: 2
+  //   }
+  // ]
+
+
+app.get('/api/panier', async (req, res, next) => {
+  try {
+    // Récupérer les paniers depuis la base de données MongoDB
+    const paniers = await Panier.find();
+    
+    res.status(200).json(paniers);
+  } catch (error) {
+    console.error("Erreur lors de la récupération des paniers :", error);
+    res.status(500).json({ error: "Erreur lors de la récupération des paniers" });
+  }
+})
+
+app.post('/api/panier/ajouter', async (req, res) => {
+  try {
+    // Créer un nouvel objet Panier avec les données du corps de la requête
+    const newPanier = new Panier(req.body);
+
+    // Sauvegarder le panier dans la base de données
+    const savedPanier = await newPanier.save();
+
+    res.json({ id: savedPanier._id });
+  } catch (error) {
+    console.error("Erreur lors de l'ajout au panier :", error);
+    res.status(500).json({ error: "Erreur lors de l'ajout au panier" });
+  }
+})
+
+app.delete('api/panier/retirer/:favoritedId', async (req, res) => {
+  try {
+    const favoriteIdToRemove = req.params.favoriteId
+
+    const removedItem = await Panier.findOneAndDelete({ id: favoriteIdToRemove })
+
+    res.json({ message: "Article retiré du panier", removedItem });
+  } catch (err) {
+    console.error("Erreur lors du retirement de la pièce du panier :", error);
+    res.status(500).json({ error: "Erreur lors du retirement de la pièce du panier" });
+  }
 })
 
 passport.use(new GoogleStrategy({
