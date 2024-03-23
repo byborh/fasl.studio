@@ -9,6 +9,9 @@ const mongoose = require('./db')
 const User = require('./db/user')
 const Panier = require('./db/panier')
 
+// Utiliser CORS middleware
+// app.use(cors());
+
 // ----------------------------------------------------------------------------
 
 const app = express()
@@ -21,14 +24,14 @@ module.exports = app
 // Erreurs de CORS (Cross Origin Resource Sharing) - ça bloque les appels HTTP entre des serveurs différents. frontend <--- ---> backend
 const header = (_, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Authorization, Accept"
-  );
+  res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,DELETE");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-client-key,x-client-token, x-client-secret, Authorization");    
   next();
 };
 
 app.use(header) // EXPRESS CONFIG
+
+// app.use(corsHeaders); // Utilisation du middleware dans ton application
 
 app.set('view engine', 'ejs') //Connecter un moteur de template
 
@@ -96,12 +99,12 @@ app.get('/api/items', (req, res, next) => {
         id : 0,
         title : "Tee-shit Oversize Verte",
         price : 25,
-        imageUrl : "/public/piece-green-red-front.webp"
+        imageUrl : "/public/t-shirt_rouge_devant.webp"
       },{
         id : 1,
         title : "Tee-shit Oversize Rose",
         price : 25,
-        imageUrl : "/public/piece-pink-front.webp"
+        imageUrl : "/public/t-shirt_rose_devant.webp"
       }
     ]
     res.status(200).json(items);
@@ -146,7 +149,7 @@ app.post('/api/panier/ajouter', async (req, res) => {
   }
 })
 
-app.delete('api/panier/retirer/:favoritedId', async (req, res) => {
+app.delete('api/panier/retirer/:favoriteId', async (req, res) => {
   try {
     const favoriteIdToRemove = req.params.favoriteId
 

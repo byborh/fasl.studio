@@ -142,6 +142,5 @@ nav a {
   height: 20px;
   margin: 5px;
   font-size: x-large;
-  
 }
 </style>

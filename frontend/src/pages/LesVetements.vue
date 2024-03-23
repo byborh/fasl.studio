@@ -7,6 +7,7 @@ const items = ref ([ // ref met/transforme tout en objet : [ value : {} ]
 ])
 
 const cart = ref ([])
+// const { UUID } = require('bson'); // Générer une priméry key
 
 export default {
   setup() {
@@ -51,7 +52,12 @@ export default {
     const addToPanier = async (item) => {
       try {
         if(!item.isAdded){
+          // const client = new MongoClient(uri, {
+          //   pkFactory: { createPk: () =>  new UUID().toBinary() }
+          // });
+
           const obj2 = {
+            // id: client,
             parentId: item.id
           }
 

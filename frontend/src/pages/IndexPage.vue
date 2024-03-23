@@ -1,58 +1,27 @@
 <template>
   <div id="app">
+    <br><br>
     <!--BODY DU SITE-->
-    <!-- Changeur d'image -->
-    <img class="logo-fasl.studio" src="../../public/logo-green-red.png" alt="Logo Fasl.studio">
-    <br /><br />
-    <!-- Who Part -->
-    <div class="who-part">
-      <div class="who-part-img">
-        <img
-          src="../../public/img1.jpg"
-          alt="test"
-        />
+    <!-- <img class="logo-fasl.studio" src="../../public/logo-green-red.png" alt="Logo Fasl.studio"> -->
+    <div class="affiche">
+      <div class="aff-img">
+          <img src="../../public/logo-green-red.png" alt="Logo Fasl.studio">
       </div>
-      <div class="who-part-text">
-        <p>
-          Tous les détails sont fait avec soin et du coeur.
-        </p>
-      </div>
-    </div>
-    <div class="who-part">
-      <div class="who-part-text">
-        <p>
-          À travers l'écran émerge une esthétique qui transcende l'éphémère.
-        </p>
-      </div>
-      <div class="who-part-img">
-        <img
-          src="../../public/img2.jpg"
-          alt="test"
-        />
+      <div class="aff-text">
+          <h2>Fasl.Studio</h2>
+          <p>Il y en a qui regardent et Il y'en a qui portent</p>
       </div>
     </div>
     <br /><br />
-    <!-- How Text -->
-    <div class="how">
-      <div class="how-text">
-        <h6>Il y'en a qui regardent et Il y'en a qui <u>portent</u></h6>
-        <p>
-          Bienvenue chez Fasl Studio, où l'élégance et la tradition se rencontrent pour créer une expérience vestimentaire unique. Inspirée par la richesse de la culture arabe, notre marque incarne l'union entre la modernité et les racines profondes, offrant des vêtements qui reflètent la diversité et la sophistication.  Chez Fasl Studio, chaque pièce est soigneusement conçue pour capturer l'esprit des saisons arabes, évoquant un mélange harmonieux de textures, de motifs et de couleurs. Nous croyons en l'authenticité et la qualité, plaçant l'artisanat au cœur de notre processus de création. Rejoignez-nous dans ce voyage où chaque tenue raconte une histoire, où la mode devient une célébration de l'héritage arabe. Fasl Studio, bien plus qu'une marque de vêtements, une déclaration de style qui transcende les frontières culturelles.
-        </p>
-      </div>
-      <!-- <div class="how-text">
-        <h6>Lorem</h6>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil
-          excepturi veritatis neque, voluptate minus repudiandae, eaque amet
-          consequatur odit ab reiciendis sed labore non delectus similique
-          deleniti nesciunt itaque repellendus!
-        </p>
-      </div> -->
-      <!-- <div class="how-text">
-        <h6>Lorem</h6>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil excepturi veritatis neque, voluptate minus repudiandae, eaque amet consequatur odit ab reiciendis sed labore non delectus similique deleniti nesciunt itaque repellendus!</p>
-      </div> -->
+    <div class="q-pa-md">
+      <q-card class="my-card">
+        <q-card-section>
+          <div class="text-h6">Our Changing Style</div>
+          <div class="text-subtitle2">
+            Bienvenue chez Fasl Studio, où l'élégance et la tradition se rencontrent pour créer une expérience vestimentaire unique. Inspirée par la richesse de la culture arabe, notre marque incarne l'union entre la modernité et les racines profondes, offrant des vêtements qui reflètent la diversité et la sophistication.  Chez Fasl Studio, chaque pièce est soigneusement conçue pour capturer l'esprit des saisons arabes, évoquant un mélange harmonieux de textures, de motifs et de couleurs. Nous croyons en l'authenticité et la qualité, plaçant l'artisanat au cœur de notre processus de création. Rejoignez-nous dans ce voyage où chaque tenue raconte une histoire, où la mode devient une célébration de l'héritage arabe. Fasl Studio, bien plus qu'une marque de vêtements, une déclaration de style qui transcende les frontières culturelles.
+          </div>
+        </q-card-section>
+      </q-card>
     </div>
 
     <br /><br />
@@ -70,22 +39,6 @@
     </div>
 
     <br /><br />
-
-    <div class="q-pa-md">
-      <q-card class="my-card">
-        <q-parallax
-          src="../../public/img3.jpg"
-          :height="400"
-        />
-
-        <q-card-section>
-          <div class="text-h6">Our Changing Style</div>
-          <div class="text-subtitle2">
-            Bienvenue chez Fasl Studio, où l'élégance et la tradition se rencontrent pour créer une expérience vestimentaire unique. Inspirée par la richesse de la culture arabe, notre marque incarne l'union entre la modernité et les racines profondes, offrant des vêtements qui reflètent la diversité et la sophistication.  Chez Fasl Studio, chaque pièce est soigneusement conçue pour capturer l'esprit des saisons arabes, évoquant un mélange harmonieux de textures, de motifs et de couleurs. Nous croyons en l'authenticité et la qualité, plaçant l'artisanat au cœur de notre processus de création. Rejoignez-nous dans ce voyage où chaque tenue raconte une histoire, où la mode devient une célébration de l'héritage arabe. Fasl Studio, bien plus qu'une marque de vêtements, une déclaration de style qui transcende les frontières culturelles.
-          </div>
-        </q-card-section>
-      </q-card>
-    </div>
 
     <div class="q-pa-md">
       <div class="q-col-gutter-md row items-start">
@@ -165,67 +118,31 @@ export default defineComponent({
   width: 100%;
 }
 
-/* */
-img .logo-fasl.studio {
-  width: 200px;
-  height: 600px;
-}
+.affiche {height: 800px;}
 
-/* Who Row */
-
-.who-part {
-  min-height: 500px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.aff-img {
+  position: absolute;
   width: 100%;
-  background-color: #6f722f;
-  color: #fff;
+  /* height: 100%; */
 }
-
-.who-part-img {
-  width: 50%;
-}
-
-.who-part-img img {
+.aff-img img {
   width: 100%;
   height: 100%;
+  opacity: 0.7;
+}
+.aff-text {
+  color: black;
+  top: 300px;
+  position: absolute;
+  width: 600px;
+  left: 10%;
+  font-size: 200%;
+  min-height: 150px;
 }
 
-.who-part-text {
-  width: 50%;
-  padding: 20px 20px;
-}
-
-/* How Text */
-.how {
-  min-height: 300px;
-  max-height: 700px;
-
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.aligner-centre {
+  margin-top: 15px;
+  opacity: 0.7;
   text-align: center;
-  overflow: auto;
-}
-
-.how-text {
-  padding: 20px 12px;
-}
-
-/* Vidéo Part */
-.video-part {
-  text-align: center;
-}
-
-.how h6,
-.video-part h6 {
-  color: #0d1f22;
-}
-
-.how p {
-  color: #3c5233;
 }
 </style>

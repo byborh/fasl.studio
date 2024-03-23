@@ -8,6 +8,7 @@ export default {
     setup () {
 
         const itemsInPanier = ref([])
+        const filteredItems = ref([]);
 
         const fetchPanier = async () => {
             try {
@@ -27,9 +28,12 @@ export default {
                             ids: itemsInPanier.value.join(',')
                         }
                     })
-                    const filteredItems = data.filter(item => itemsInPanier.value.includes(item.id))
-                    
+                    filteredItems.value = data.filter(item => itemsInPanier.value.includes(item.id));
+
+                    console.log(filteredItems.value);
+                    console.log(filteredItems.value.__v_raw)
                     console.log(filteredItems)
+                    
                     console.log(data)
                     console.log(itemsInPanier.value)
                     // return filteredItems
@@ -44,15 +48,14 @@ export default {
             }
         }
 
-
-
         onMounted(async () => {
             await fetchPanier()
             await fetchItemsDetails()
         })
 
         return{
-            itemsInPanier
+            itemsInPanier,
+            filteredItems
         }
     },
     components : {
@@ -64,8 +67,8 @@ export default {
 
 <template>
     <!--Liste des éléments-->
-    <div v-if="itemsInPanier.length>0">
-        <CartItemList :itemsInPanier="itemsInPanier" />
+    <div v-if="filteredItems.length > 0">
+        <CartItemList :filteredItems="filteredItems" />
     </div>
     <div v-else>
         <p>Aucun élément dans le panier :(</p>

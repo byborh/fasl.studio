@@ -1,4 +1,5 @@
 <script>
+import { inject } from "vue";
 import CartItem from "./CartItem.vue"
 
 export default {

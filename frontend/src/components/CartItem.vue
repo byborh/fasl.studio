@@ -1,4 +1,7 @@
 <script>
+import {ref} from 'vue'
+import axios from 'axios'
+
 export default {
     props: {
         id: Number,
@@ -9,7 +12,10 @@ export default {
     },
 
     setup () {
-        return {};
+        return {}
+        // delateFromPanier = async (item) => {
+            
+        // }
     },
     methods: {
         test() {
