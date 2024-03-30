@@ -11,7 +11,6 @@ const routes = [
       { path: 'accessoires', component: () => import('pages/LesAccessoires.vue') },
       { path: 'a-propos', component: () => import('pages/APropos.vue') },
       { path: 'contactes', component: () => import('pages/LesContactes.vue') },
-      
       { path: 'profil', component: () => import('pages/ProfilPage.vue') }
     ]
   },

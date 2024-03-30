@@ -1,11 +1,17 @@
 <template>
   <div id="app">
-    <br><br>
     <!--BODY DU SITE-->
     <!-- <img class="logo-fasl.studio" src="../../public/logo-green-red.png" alt="Logo Fasl.studio"> -->
     <div class="affiche">
       <div class="aff-img">
-          <img src="../../public/logo-green-red.png" alt="Logo Fasl.studio">
+          <!-- <img src="../../public/logo-green-red.png" alt="Logo Fasl.studio"> -->
+          <video playsinline autoplay muted loop poster="" style="width: 100%">
+            <source
+              src="../../public/video1.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
       </div>
       <div class="aff-text">
           <h2>Fasl.Studio</h2>
@@ -27,7 +33,7 @@
     <br /><br />
 
     <!-- VIDEO Part -->
-    <div class="video-part">
+    <!-- <div class="video-part">
       <h6>Video de la fabrication</h6>
       <video playsinline autoplay muted loop poster="" style="width: 100%">
         <source
@@ -36,7 +42,7 @@
         />
         Your browser does not support the video tag.
       </video>
-    </div>
+    </div> -->
 
     <br /><br />
 
@@ -125,7 +131,7 @@ export default defineComponent({
   width: 100%;
   /* height: 100%; */
 }
-.aff-img img {
+.aff-img img, .aff-img video {
   width: 100%;
   height: 100%;
   opacity: 0.7;

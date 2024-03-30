@@ -5,7 +5,8 @@ import { createApp, defineComponent, defineEmits, ref} from "vue";
 export default defineComponent ({
   props: { // = defineProps
     items: {
-      type: Array
+      type: Array,
+      required: true
     }
   },
 
@@ -14,6 +15,7 @@ export default defineComponent ({
     const addToPanier = (item) => {
       emit('addToPanier', item);
     };
+
    
     // const onClickAdd = () => {
     //   if (isAdded == false) {

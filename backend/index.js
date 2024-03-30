@@ -9,12 +9,10 @@ const mongoose = require('./db')
 const User = require('./db/user')
 const Panier = require('./db/panier')
 
-// Utiliser CORS middleware
-// app.use(cors());
-
 // ----------------------------------------------------------------------------
 
 const app = express()
+
 
 HOST = "localhost"
 PORT = 8080
@@ -24,8 +22,8 @@ module.exports = app
 // Erreurs de CORS (Cross Origin Resource Sharing) - ça bloque les appels HTTP entre des serveurs différents. frontend <--- ---> backend
 const header = (_, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,DELETE");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, x-client-key,x-client-token, x-client-secret, Authorization");    
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, HEAD, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, x-client-key,x-client-token, x-client-secret, Authorization");    
   next();
 };
 
@@ -149,23 +147,24 @@ app.post('/api/panier/ajouter', async (req, res) => {
   }
 })
 
-app.delete('api/panier/retirer/:favoriteId', async (req, res) => {
-  try {
-    const favoriteIdToRemove = req.params.favoriteId
 
-    const removedItem = await Panier.findOneAndDelete({ id: favoriteIdToRemove })
+app.delete('/api/panier/retirer/:cartId', async (req, res) => {
+  try {
+    const cartIdToRemove = req.params.cartId
+
+    const removedItem = await Panier.findOneAndDelete({ id: cartIdToRemove })
 
     res.json({ message: "Article retiré du panier", removedItem });
   } catch (err) {
-    console.error("Erreur lors du retirement de la pièce du panier :", error);
-    res.status(500).json({ error: "Erreur lors du retirement de la pièce du panier" });
+    console.error("Erreur lors du retirement de la pièce du panier :", err);
+    res.status(500).json({ err: "Erreur lors du retirement de la pièce du panier" });
   }
 })
 
 passport.use(new GoogleStrategy({
   clientID: "137321509489-6eu63q9jr6d2j78h1o1u0ana1h6l9ihr.apps.googleusercontent.com",
   clientSecret: "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",
-  callbackURL: "http://localhost:8080/auth/google/callback",
+  callbackURL: "http://localhost:0/auth/google/callback",
   scope: ['profile', 'email']
 },
 (accessToken, refreshToken, profile, done) => {

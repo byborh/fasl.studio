@@ -1,14 +1,14 @@
-version: '3'
-services:
-  backend:
-    image: node:14
-    working_dir: /app
-    volumes:
-      - ./backend:/app
-    ports:
-      - "8080:8080"
-    command: npm start
-  redis:
-    image: "redis:latest"
-    ports:
-      - "6379:6379"
+# version: '3'
+# services:
+#   backend:
+#     image: node:14
+#     working_dir: /app
+#     volumes:
+#       - ./backend:/app
+#     ports:
+#       - "8081:8081"
+#     command: npm start
+#   redis:
+#     image: "redis:latest"
+#     ports:
+#       - "6379:6379"

@@ -30,12 +30,15 @@ export default {
                     })
                     filteredItems.value = data.filter(item => itemsInPanier.value.includes(item.id));
 
-                    console.log(filteredItems.value);
-                    console.log(filteredItems.value.__v_raw)
-                    console.log(filteredItems)
+                    // console.log(filteredItems.value);
+                    // console.log(filteredItems.value.__v_raw)
+                    // console.log(filteredItems)
                     
-                    console.log(data)
-                    console.log(itemsInPanier.value)
+                    // console.log(data)
+                    // console.log(itemsInPanier.value)
+
+
+                    
                     // return filteredItems
 
                     //console.log(data) // tous les vetêments

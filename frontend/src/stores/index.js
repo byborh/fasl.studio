@@ -16,5 +16,18 @@ export default store((/* { ssrContext } */) => {
   // You can add Pinia plugins here
   // pinia.use(SomePiniaPlugin)
 
+  // pinia.state = { // Définir l'état initial du panier
+  //   panier: []
+  // }
+
+  // pinia.actions = { // Définir les actions pour modifier l'état du panier
+  //   addToPanier(item) { // Ajouter l'élément au panier
+  //     pinia.state.panier.push(item)
+  //   },
+  //   removeFromPanier(item) {
+  //     pinia.state.panier = pinia.state.panier.filter((p) => p !== item)
+  //   }
+  // }
+
   return pinia
 })

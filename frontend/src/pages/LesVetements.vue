@@ -1,7 +1,9 @@
 <script>
 import { ref, onMounted, provide } from "vue";
 import MyCards from "../components/MyCards.vue";
-import axios from 'axios';
+import axios from "axios";
+import { useItemsStore } from "src/stores/itemsStore";
+import { useCartStore } from "src/stores/CartStore";
 
 const items = ref ([ // ref met/transforme tout en objet : [ value : {} ]
 ])
@@ -11,21 +13,12 @@ const cart = ref ([])
 
 export default {
   setup() {
-    const fetchItems = async () => {
-      try {
-        const { data } = await axios.get('http://localhost:8080/api/items')
-        
-        items.value = data.map((obj) => ({
-          ...obj,
-          isAdded: false,
-          favoriteId: null
-        }))
+    const itemsStore = useItemsStore() // Utiliser Store(pinia)
+    // const cartStore = useCartStore()
 
-        const parentItems = items.value
-      } catch(err) {
-        console.log(err)
-        
-      }
+    const fetchItems = async () => {
+      await itemsStore.fetchItemsFromBackend()
+      console.log("dans vetements : ", itemsStore.items)
     }
 
     const fetchPanier = async () => {
@@ -33,15 +26,15 @@ export default {
         const { data: panier } = await axios.get('http://localhost:8080/api/panier')
         
         items.value = items.value.map((item) => {
-          const favorite = panier.find((favorite) => favorite.parentId === item.id)
+          const cartItem = panier.find((cartItem) => cartItem.parentId === item.id)
         
-          if(!favorite) {
+          if(!cartItem) {
             return item
           }
           return {
             ...item,
             isAdded: true,
-            favoriteId: favorite.id
+            // cartId: cart.id
           }
         })
       } catch(err) {
@@ -50,34 +43,7 @@ export default {
     }
 
     const addToPanier = async (item) => {
-      try {
-        if(!item.isAdded){
-          // const client = new MongoClient(uri, {
-          //   pkFactory: { createPk: () =>  new UUID().toBinary() }
-          // });
-
-          const obj2 = {
-            // id: client,
-            parentId: item.id
-          }
-
-          item.isAdded = true
-
-          const { data } = await axios.post('http://localhost:8080/api/panier/ajouter', obj2)
-
-          item.favoriteId = data.id
-
-        } else {
-          item.isAdded = false
-          await axios.delete(`http://localhost:8080/api/panier/retirer/${item.favoriteId}`)
-          item.favoriteId = null
-        }
-
-      } catch (err) {
-        console.log(err)
-      }
-
-      // item.isAdded = !item.isAdded
+      useCartStore.addToCart(item)
     }
 
     onMounted(async () => {
@@ -90,10 +56,10 @@ export default {
                                         // component1 -----------------------------> component4
 
     return {
-      items,
+      items: itemsStore.items,
       trier: '',
       searchEl: '',
-      elementRestants: 0,
+      // elementRestants: 0,
       parentItems: '',
       addToPanier
     };
@@ -104,45 +70,31 @@ export default {
   methods: {
     sortEl() {
       if(this.trier == 'price') {
-        items.value.sort(function (a, b) { // A COMPRENDRE
-          if(a.price > b.price) {
-            return 1
-          } else {
-            return -1
-          }
-        })
+        items.value.sort((a, b) => a.price - b.price)
+        // items.value.sort(function (a, b) { // A COMPRENDRE
+        //   if(a.price > b.price) {
+        //     return 1
+        //   } else {
+        //     return -1
+        //   }
+        // })
       } else if(this.trier == 'priceDesc') {
-        items.value.sort(function (a, b) {
-          if(a.price < b.price) {
-            return 1
-          } else {
-            return -1
-          }
-        })
+        items.value.sort((a, b) => b.price - a.price)
       } else {
-        items.value.sort(function (a, b) {
-          if (a.title < b.title) {
-            return -1;
-          } else {
-            return 1;
-          }
-        })
+        items.value.sort((a, b) => a.title.localCompare(b.title))
       }
     },
 
     search() {
-      if(this.searchEl != '') {
+      const searchText = this.searchEl.value.toLowerCase().trim()
+      if(searchEl !== '') {
         // Filtrer les éléments dont le titre contient le texte de recherche
-        const filteredItems = items.value.filter(item => { // A COMPRENDRE
-          if (item.title) {
-            return item.title.toLowerCase().includes(this.searchEl.toLowerCase().trim());
-          }
-          return false;
-        });
+        const searchText = items.value.filter(item =>  // A COMPRENDRE
+          item.title.toLowerCase().includes(searchText)
+        )
 
-        items.value = filteredItems
-
-        if (filteredItems == 0) {
+        items.value = searchText
+        if (searchText.length === 0) {
           alert("y'a plus rien")
           items.value = parentItems
         }
